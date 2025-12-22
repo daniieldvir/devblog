@@ -19,10 +19,10 @@
 
       <app-comment-actions
         [editedMode]="editMode()"
-        [replysCount]="comment()?.replies?.length ?? 0"
-        (editClicked)="edit(comment()?.id!)"
-        (replyClicked)="reply(comment()!)"
-        (deleteClicked)="deleteComment(comment()?.id!)"
+        [repliesCount]="comment?.replies?.length ?? 0"
+        (editClicked)="edit(comment?.id!)"
+        (replyClicked)="reply(comment!)"
+        (deleteClicked)="deleteComment(comment?.id!)"
         (toggleReplysClicked)="toggleReplys()"
       />
     </div>
