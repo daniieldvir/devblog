@@ -1,7 +1,7 @@
 <header class="header">
   <div class="header-content">
     <!-- Logo -->
-    <a href="/" class="logo">
+    <a routerLink="/" class="logo">
       <span class="logo-icon">◆</span>
       <span class="logo-text">DevBlog</span>
     </a>
@@ -9,13 +9,13 @@
     <!-- Navigation -->
     <nav class="nav">
       @for (link of navLinks; track link.path) {
-        <a
-          [routerLink]="link.path"
-          routerLinkActive="active"
-          [routerLinkActiveOptions]="{ exact: link.path === '/' }"
-          class="nav-link"
-          >{{ link.label }}</a
-        >
+      <a
+        [routerLink]="link.path"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: link.path === '/' }"
+        class="nav-link"
+        >{{ link.label }}</a
+      >
       }
     </nav>
 
@@ -25,15 +25,15 @@
   <!-- Theme Toggle -->
   <app-button class="theme-toggle-btn" (onClick)="toggleTheme()">
     @if (isDarkMode()) {
-      <svg class="theme-icon" viewBox="0 0 24 24" fill="currentColor">
-        <path
-          d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"
-        />
-      </svg>
+    <svg class="theme-icon" viewBox="0 0 24 24" fill="currentColor">
+      <path
+        d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"
+      />
+    </svg>
     } @else {
-      <svg class="theme-icon" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
-      </svg>
+    <svg class="theme-icon" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+    </svg>
     }
   </app-button>
 </header>
