@@ -1,5 +1,6 @@
-import { Component, output, signal } from '@angular/core';
-import { RouterLink, RouterLinkActive } from '@angular/router';
+import { Component, inject, OnInit, output, signal } from '@angular/core';
+import { NavigationEnd, Router, RouterLink, RouterLinkActive } from '@angular/router';
+import { filter } from 'rxjs';
 import { ButtonComponent } from '../../utils-components/button/button.component';
 import { SearchComponent } from '../../utils-components/search/search.component';
 
@@ -10,9 +11,14 @@ import { SearchComponent } from '../../utils-components/search/search.component'
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit {
+  private readonly router = inject(Router);
+
   isDarkMode = signal(false);
   searchQueryChange = output<string>();
+  menuToggle = output<void>();
+
+  protected readonly isBlogPage = signal(false);
 
   navLinks = [
     { label: 'Home', path: '/' },
@@ -21,6 +27,17 @@ export class HeaderComponent {
     { label: 'About', path: '/about' },
   ];
 
+  ngOnInit(): void {
+    // Check if we're on blog page on route changes
+    this.router.events.pipe(filter((event) => event instanceof NavigationEnd)).subscribe(() => {
+      const isBlog = this.router.url === '/blog' || this.router.url.startsWith('/blog');
+      this.isBlogPage.set(isBlog);
+    });
+    // Initial check
+    const isBlog = this.router.url === '/blog' || this.router.url.startsWith('/blog');
+    this.isBlogPage.set(isBlog);
+  }
+
   toggleTheme(): void {
     this.isDarkMode.update((value) => !value);
     document.documentElement.setAttribute('data-theme', this.isDarkMode() ? 'dark' : 'light');
@@ -28,5 +45,9 @@ export class HeaderComponent {
 
   onSearchChange(query: string): void {
     this.searchQueryChange.emit(query);
+  }
+
+  onSidebarToggle(): void {
+    this.menuToggle.emit();
   }
 }

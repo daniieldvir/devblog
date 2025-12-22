@@ -20,6 +20,7 @@ export class BlogComponent {
   protected readonly isLoading = select(BlogSelectors.slices.loading);
 
   protected readonly searchQuery = signal('');
+  protected readonly isMobileMenuOpen = signal(false);
 
   protected readonly filteredUserComments = computed(() => {
     return this.store.selectSignal(BlogSelectors.filteredUserComments(this.searchQuery()))();
@@ -27,6 +28,15 @@ export class BlogComponent {
 
   onSearchChange(query: string): void {
     this.searchQuery.set(query);
+  }
+
+  onSidebarToggle(): void {
+    // Toggle sidebar (only visible on mobile)
+    this.isMobileMenuOpen.update((value) => !value);
+  }
+
+  onOverlayClick(): void {
+    this.isMobileMenuOpen.set(false);
   }
 
   ngOnInit() {

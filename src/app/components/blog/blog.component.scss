@@ -21,6 +21,7 @@
     @media (max-width: 768px) {
       flex-direction: column;
       padding: 1rem;
+      gap: 1rem;
     }
 
     app-sidebar {
@@ -29,8 +30,27 @@
       flex-shrink: 0;
 
       @media (max-width: 768px) {
-        position: static;
-        width: 100%;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 280px;
+        max-width: 85vw;
+        height: 100vh;
+        z-index: 1000;
+        transform: translateX(-100%);
+        transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        border-radius: 0;
+        border: none;
+        border-right: 1px solid $light-border;
+        overflow-y: auto;
+
+        @include dark-mode {
+          border-right-color: $dark-border;
+        }
+
+        &.mobile-open {
+          transform: translateX(0);
+        }
       }
     }
 
@@ -38,11 +58,19 @@
       flex: 1;
       min-width: 0;
 
+      @media (max-width: 768px) {
+        width: 100%;
+      }
+
       .loading {
         padding: 2rem;
         text-align: center;
         color: $light-text-muted;
         font-size: 0.95rem;
+
+        @media (max-width: 768px) {
+          padding: 1.5rem 1rem;
+        }
 
         @include dark-mode {
           color: $dark-text-muted;

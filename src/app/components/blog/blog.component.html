@@ -1,11 +1,12 @@
-<app-header (searchQueryChange)="onSearchChange($event)" />
+<app-header (searchQueryChange)="onSearchChange($event)" (menuToggle)="onSidebarToggle()" />
+
 <div class="blog-content">
-  <app-sidebar />
+  <app-sidebar [class.mobile-open]="isMobileMenuOpen()" />
   <div class="main-content">
     @if (isLoading()) {
-      <p class="loading">Loading...</p>
+    <p class="loading">Loading...</p>
     } @else {
-      <app-comment-list [commentsWithOwners]="filteredUserComments()" />
+    <app-comment-list [commentsWithOwners]="filteredUserComments()" />
     }
   </div>
 </div>

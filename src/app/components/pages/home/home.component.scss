@@ -14,15 +14,28 @@
     margin: 0 auto;
     padding: 2rem;
 
+    @media (max-width: 768px) {
+      padding: 1rem;
+    }
+
     .hero {
       text-align: center;
       padding: 4rem 2rem;
+
+      @media (max-width: 768px) {
+        padding: 2.5rem 1rem;
+      }
 
       .hero-title {
         font-size: 3rem;
         font-weight: 800;
         color: $light-text;
         margin-bottom: 1rem;
+
+        @media (max-width: 768px) {
+          font-size: 2rem;
+          margin-bottom: 0.75rem;
+        }
 
         @include dark-mode {
           color: $dark-text;
@@ -33,6 +46,11 @@
         font-size: 1.25rem;
         color: $light-text-muted;
         margin-bottom: 2rem;
+
+        @media (max-width: 768px) {
+          font-size: 1rem;
+          margin-bottom: 1.5rem;
+        }
 
         @include dark-mode {
           color: $dark-text-muted;
@@ -48,6 +66,11 @@
         border-radius: 12px;
         font-weight: 600;
         transition: all 0.2s ease;
+
+        @media (max-width: 768px) {
+          padding: 0.875rem 1.5rem;
+          font-size: 0.9rem;
+        }
 
         &:hover {
           background: $light-accent-hover;
@@ -70,6 +93,12 @@
       gap: 2rem;
       padding: 2rem 0;
 
+      @media (max-width: 768px) {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        padding: 1.5rem 0;
+      }
+
       .feature {
         padding: 2rem;
         background: $light-bg;
@@ -77,6 +106,10 @@
         border-radius: 16px;
         text-align: center;
         transition: all 0.2s ease;
+
+        @media (max-width: 768px) {
+          padding: 1.5rem;
+        }
 
         &:hover {
           transform: translateY(-4px);
@@ -96,6 +129,11 @@
           font-size: 2.5rem;
           display: block;
           margin-bottom: 1rem;
+
+          @media (max-width: 768px) {
+            font-size: 2rem;
+            margin-bottom: 0.75rem;
+          }
         }
 
         .feature-title {
@@ -103,6 +141,10 @@
           font-weight: 700;
           color: $light-text;
           margin-bottom: 0.5rem;
+
+          @media (max-width: 768px) {
+            font-size: 1.1rem;
+          }
 
           @include dark-mode {
             color: $dark-text;
@@ -112,6 +154,10 @@
         .feature-desc {
           font-size: 0.95rem;
           color: $light-text-muted;
+
+          @media (max-width: 768px) {
+            font-size: 0.875rem;
+          }
 
           @include dark-mode {
             color: $dark-text-muted;

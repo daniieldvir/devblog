@@ -8,6 +8,13 @@
     align-items: center;
     gap: 0.5rem;
     flex-shrink: 0;
+    flex-wrap: wrap;
+
+    @media (max-width: 768px) {
+      gap: 0.375rem;
+      width: 100%;
+      justify-content: flex-start;
+    }
 
     ::ng-deep app-button {
       .button {
@@ -20,6 +27,11 @@
         border: 1px solid $light-border;
         border-radius: 6px;
         transition: all 0.2s ease;
+
+        @media (max-width: 768px) {
+          padding: 0.35rem 0.625rem;
+          font-size: 0.75rem;
+        }
 
         &:hover {
           background: $light-accent;

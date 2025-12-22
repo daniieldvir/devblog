@@ -20,6 +20,12 @@
       border-color: $dark-border;
     }
 
+    @media (max-width: 768px) {
+      max-width: 100%;
+      padding: 1.25rem;
+      gap: 1.25rem;
+    }
+
     .sidebar-section {
       padding-bottom: 1.5rem;
       border-bottom: 1px solid $light-border;
