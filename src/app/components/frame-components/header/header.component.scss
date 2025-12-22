@@ -1,0 +1,153 @@
+@use '../../../../styles/theme' as *;
+
+:host {
+  display: block;
+
+  .header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    padding: 1rem 2rem;
+    background: $light-bg;
+    border-bottom: 1px solid $light-border;
+    backdrop-filter: blur(12px);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    justify-content: space-between;
+
+    @include dark-mode {
+      background: rgba($dark-bg, 0.95);
+      border-bottom-color: $dark-border;
+    }
+
+    .header-content {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      // Logo
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        text-decoration: none;
+        flex-shrink: 0;
+
+        &:hover .logo-icon {
+          transform: rotate(45deg) scale(1.1);
+        }
+
+        .logo-icon {
+          font-size: 1.5rem;
+          color: $light-accent;
+          transition: transform 0.3s ease;
+
+          @include dark-mode {
+            color: $dark-accent;
+          }
+        }
+
+        .logo-text {
+          font-size: 1.5rem;
+          font-weight: 800;
+          color: $light-text;
+          letter-spacing: -0.02em;
+
+          @include dark-mode {
+            color: $dark-text;
+          }
+        }
+      }
+
+      // Navigation
+      .nav {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+
+        @media (max-width: 768px) {
+          display: none;
+        }
+
+        .nav-link {
+          padding: 0.5rem 1rem;
+          font-size: 0.95rem;
+          font-weight: 500;
+          color: $light-text-muted;
+          text-decoration: none;
+          border-radius: 8px;
+          transition: all 0.2s ease;
+
+          &:hover {
+            color: $light-accent;
+            background: rgba($light-accent, 0.08);
+          }
+
+          &.active {
+            color: $light-accent;
+            background: rgba($light-accent, 0.12);
+            font-weight: 600;
+          }
+
+          @include dark-mode {
+            color: $dark-text-muted;
+
+            &:hover {
+              color: $dark-accent;
+            }
+
+            &.active {
+              color: $dark-accent;
+              background: rgba($dark-accent, 0.15);
+            }
+          }
+        }
+      }
+    }
+    // Theme Toggle
+    .theme-toggle-btn {
+      flex-shrink: 0;
+
+      ::ng-deep .button {
+        min-width: auto;
+        width: 44px;
+        height: 44px;
+        padding: 0;
+        background: $light-bg-secondary;
+        border: none;
+        border-radius: 12px;
+        transition: all 0.2s ease;
+
+        &:hover {
+          background: $light-border;
+          transform: scale(1.05);
+          border-color: transparent;
+        }
+
+        &:active {
+          transform: scale(0.95);
+        }
+
+        @include dark-mode {
+          background: $dark-bg-secondary;
+
+          &:hover {
+            background: $dark-border;
+            border-color: transparent;
+          }
+        }
+      }
+
+      .theme-icon {
+        width: 22px;
+        height: 22px;
+        color: $light-accent;
+
+        @include dark-mode {
+          color: $dark-accent;
+        }
+      }
+    }
+  }
+}

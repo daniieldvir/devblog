@@ -1,0 +1,140 @@
+@use '../../../../styles/theme' as *;
+
+:host {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+
+  .add-reply-popup {
+    width: 500px;
+    min-height: 300px;
+    background: $light-bg;
+    border: 2px solid $light-border;
+    border-radius: 10px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    box-shadow:
+      0 10px 25px rgba(0, 0, 0, 0.15),
+      0 4px 10px rgba(0, 0, 0, 0.1);
+
+    @include dark-mode {
+      background: $dark-bg-secondary;
+      border-color: $dark-border;
+      box-shadow:
+        0 10px 25px rgba(0, 0, 0, 0.5),
+        0 4px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    textarea {
+      width: 100%;
+      flex: 1;
+      min-height: 120px;
+      padding: 12px;
+      border: 1px solid $light-border;
+      border-radius: 6px;
+      background: $light-bg-secondary;
+      color: $light-text;
+      font-size: 1rem;
+      font-family: inherit;
+      resize: vertical;
+      transition: all 0.2s ease;
+
+      &::placeholder {
+        color: $light-text-muted;
+      }
+
+      &:focus {
+        outline: none;
+        border-color: $light-accent;
+        background: $light-bg;
+        box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+      }
+
+      @include dark-mode {
+        background: $dark-bg;
+        border-color: $dark-border;
+        color: $dark-text;
+
+        &::placeholder {
+          color: $dark-text-muted;
+        }
+
+        &:focus {
+          border-color: $dark-accent;
+          background: $dark-bg-secondary;
+          box-shadow: 0 0 0 3px rgba(129, 140, 248, 0.1);
+        }
+      }
+    }
+
+    .add-reply-popup-actions {
+      display: flex;
+      gap: 10px;
+      align-self: flex-end;
+      margin-top: auto;
+
+      button {
+        min-width: 100px;
+        height: 36px;
+        padding: 0.5rem 1rem;
+        border-radius: 6px;
+        border: 1px solid transparent;
+        font-size: 0.9rem;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.2s ease;
+
+        &:first-child {
+          background: $light-bg-secondary;
+          color: $light-text;
+          border-color: $light-border;
+
+          &:hover {
+            background: $light-border;
+            border-color: $light-text-muted;
+          }
+
+          @include dark-mode {
+            background: $dark-bg;
+            color: $dark-text;
+            border-color: $dark-border;
+
+            &:hover {
+              background: $dark-border;
+              border-color: $dark-text-muted;
+            }
+          }
+        }
+
+        &:last-child {
+          background: $light-accent;
+          color: white;
+          border-color: $light-accent;
+          font-weight: 600;
+
+          &:hover {
+            background: $light-accent-hover;
+            border-color: $light-accent-hover;
+            box-shadow: 0 2px 8px rgba(99, 102, 241, 0.4);
+          }
+
+          @include dark-mode {
+            background: $dark-accent;
+            color: $dark-bg;
+            border-color: $dark-accent;
+
+            &:hover {
+              background: $dark-accent-hover;
+              border-color: $dark-accent-hover;
+              box-shadow: 0 2px 8px rgba(129, 140, 248, 0.4);
+            }
+          }
+        }
+      }
+    }
+  }
+}

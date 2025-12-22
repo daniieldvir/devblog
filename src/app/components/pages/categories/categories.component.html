@@ -1,0 +1,18 @@
+<app-header />
+<main class="categories-page">
+  <section class="categories-hero">
+    <h1 class="page-title">Categories</h1>
+    <p class="page-subtitle">Browse articles by topic</p>
+  </section>
+
+  <section class="categories-grid">
+    @for (category of categories; track category.name) {
+      <a href="#" class="category-card">
+        <span class="category-icon">{{ category.icon }}</span>
+        <h3 class="category-name">{{ category.name }}</h3>
+        <span class="category-count">{{ category.count }} articles</span>
+      </a>
+    }
+  </section>
+</main>
+<app-footer />

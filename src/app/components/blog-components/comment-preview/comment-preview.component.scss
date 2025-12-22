@@ -1,0 +1,160 @@
+@use '../../../../styles/theme' as *;
+
+:host {
+  display: block;
+
+  .comment-preview-container {
+    .comment-preview {
+      padding: 1rem 1.25rem;
+      background: $light-bg;
+      border: 1px solid $light-border;
+      border-radius: 12px;
+      transition: all 0.2s ease;
+
+      &:hover {
+        border-color: rgba($light-accent, 0.3);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+      }
+
+      @include dark-mode {
+        background: $dark-bg-secondary;
+        border-color: $dark-border;
+
+        &:hover {
+          border-color: rgba($dark-accent, 0.3);
+          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        }
+      }
+
+      .comment-preview-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        margin-bottom: 0.75rem;
+
+        .comment-preview-header-info {
+          display: flex;
+          align-items: center;
+          gap: 0.75rem;
+
+          img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 2px solid $light-accent;
+            object-fit: cover;
+            transition: transform 0.2s ease;
+
+            &:hover {
+              transform: scale(1.05);
+            }
+
+            @include dark-mode {
+              border-color: $dark-accent;
+            }
+          }
+
+          h3 {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: $light-text;
+            margin: 0;
+
+            @include dark-mode {
+              color: $dark-text;
+            }
+          }
+        }
+
+        span {
+          font-size: 0.8rem;
+          color: $light-text-muted;
+
+          @include dark-mode {
+            color: $dark-text-muted;
+          }
+        }
+      }
+
+      .comment-preview-content {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+
+        input {
+          flex: 1;
+          padding: 0.6rem 0;
+          font-size: 0.9rem;
+          color: $light-text;
+          background: transparent;
+          border: none;
+          outline: none;
+          transition: all 0.2s ease;
+
+          &::placeholder {
+            color: $light-text-muted;
+          }
+
+          &:disabled {
+            cursor: default;
+          }
+
+          @include dark-mode {
+            color: $dark-text;
+
+            &::placeholder {
+              color: $dark-text-muted;
+            }
+          }
+
+          &.edited {
+            padding: 0.6rem 0.75rem;
+            background: $light-bg-secondary;
+            border: 1px solid $light-accent;
+            border-radius: 8px;
+
+            @include dark-mode {
+              background: $dark-bg;
+              border-color: $dark-accent;
+            }
+          }
+        }
+      }
+
+      .replys {
+        margin-top: 1rem;
+        margin-left: 1.5rem;
+        padding-left: 1rem;
+        border-left: 2px solid $light-border;
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+
+        @include dark-mode {
+          border-left-color: $dark-border;
+        }
+
+        .reply {
+          .comment-preview {
+            background: $light-bg-secondary;
+            border-color: transparent;
+
+            &:hover {
+              border-color: rgba($light-accent, 0.2);
+            }
+
+            @include dark-mode {
+              background: rgba($dark-bg, 0.5);
+
+              &:hover {
+                border-color: rgba($dark-accent, 0.2);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

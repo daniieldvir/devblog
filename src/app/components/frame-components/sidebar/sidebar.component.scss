@@ -1,0 +1,335 @@
+@use '../../../../styles/theme' as *;
+
+:host {
+  display: block;
+
+  .sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    width: 100%;
+    max-width: 320px;
+    padding: 1.5rem;
+    background: $light-bg;
+    border-radius: 16px;
+    border: 1px solid $light-border;
+    transition: all 0.3s ease;
+
+    @include dark-mode {
+      background: $dark-bg-secondary;
+      border-color: $dark-border;
+    }
+
+    .sidebar-section {
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid $light-border;
+
+      &:last-child {
+        padding-bottom: 0;
+        border-bottom: none;
+      }
+
+      @include dark-mode {
+        border-bottom-color: $dark-border;
+      }
+    }
+
+    // About Section
+    .about {
+      text-align: center;
+
+      .avatar {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        margin-bottom: 1rem;
+        border: 3px solid $light-accent;
+        transition: transform 0.3s ease;
+
+        &:hover {
+          transform: scale(1.05);
+        }
+
+        @include dark-mode {
+          border-color: $dark-accent;
+        }
+      }
+
+      .author-name {
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: $light-text;
+        margin-bottom: 0.5rem;
+
+        @include dark-mode {
+          color: $dark-text;
+        }
+      }
+
+      .author-bio {
+        font-size: 0.85rem;
+        color: $light-text-muted;
+        line-height: 1.5;
+        margin-bottom: 1rem;
+
+        @include dark-mode {
+          color: $dark-text-muted;
+        }
+      }
+
+      .social-links {
+        display: flex;
+        justify-content: center;
+        gap: 0.75rem;
+
+        .social-link {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 36px;
+          height: 36px;
+          background: $light-bg-secondary;
+          border-radius: 8px;
+          text-decoration: none;
+          font-size: 0.8rem;
+          font-weight: 600;
+          color: $light-text;
+          transition: all 0.2s ease;
+
+          &:hover {
+            background: $light-accent;
+            color: white;
+            transform: translateY(-2px);
+          }
+
+          @include dark-mode {
+            background: $dark-border;
+            color: $dark-text;
+
+            &:hover {
+              background: $dark-accent;
+              color: $dark-bg;
+            }
+          }
+        }
+      }
+    }
+
+    // Section Title
+    .section-title {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: $light-text;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 1rem;
+
+      @include dark-mode {
+        color: $dark-text;
+      }
+    }
+
+    // Categories
+    .category-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+
+      .category-item {
+        .category-link {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          padding: 0.6rem 0.75rem;
+          border-radius: 8px;
+          text-decoration: none;
+          color: $light-text-muted;
+          transition: all 0.2s ease;
+
+          &:hover {
+            color: $light-accent;
+            background: rgba($light-accent, 0.08);
+
+            .category-count {
+              background: $light-accent;
+              color: white;
+            }
+          }
+
+          @include dark-mode {
+            color: $dark-text-muted;
+
+            &:hover {
+              color: $dark-accent;
+              background: rgba($dark-accent, 0.1);
+            }
+          }
+
+          .category-name {
+            font-size: 0.9rem;
+            font-weight: 500;
+          }
+
+          .category-count {
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 0.2rem 0.5rem;
+            background: $light-bg-secondary;
+            border-radius: 12px;
+            color: $light-text-muted;
+            transition: all 0.2s ease;
+
+            @include dark-mode {
+              background: $dark-border;
+              color: $dark-text-muted;
+            }
+          }
+        }
+      }
+    }
+
+    // Recent Posts
+    .recent-posts {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+
+      .post-item {
+        .post-link {
+          display: flex;
+          flex-direction: column;
+          gap: 0.25rem;
+          text-decoration: none;
+          padding: 0.5rem;
+          margin: -0.5rem;
+          border-radius: 8px;
+          transition: background 0.2s ease;
+
+          &:hover {
+            background: rgba($light-accent, 0.05);
+
+            .post-title {
+              color: $light-accent;
+            }
+          }
+
+          @include dark-mode {
+            &:hover .post-title {
+              color: $dark-accent;
+            }
+          }
+
+          .post-title {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: $light-text;
+            line-height: 1.4;
+            transition: color 0.2s ease;
+
+            @include dark-mode {
+              color: $dark-text;
+            }
+          }
+
+          .post-date {
+            font-size: 0.75rem;
+            color: $light-text-muted;
+
+            @include dark-mode {
+              color: $dark-text-muted;
+            }
+          }
+        }
+      }
+    }
+
+    // Newsletter
+    .newsletter {
+      .newsletter-text {
+        font-size: 0.85rem;
+        color: $light-text-muted;
+        margin-bottom: 1rem;
+        line-height: 1.5;
+
+        @include dark-mode {
+          color: $dark-text-muted;
+        }
+      }
+
+      .newsletter-form {
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+
+        .newsletter-input {
+          padding: 0.75rem 1rem;
+          border: 1px solid $light-border;
+          border-radius: 10px;
+          font-size: 0.9rem;
+          background: $light-bg-secondary;
+          color: $light-text;
+          outline: none;
+          transition: all 0.2s ease;
+
+          &::placeholder {
+            color: $light-text-muted;
+          }
+
+          &:focus {
+            border-color: $light-accent;
+            box-shadow: 0 0 0 3px rgba($light-accent, 0.1);
+          }
+
+          @include dark-mode {
+            background: $dark-bg;
+            border-color: $dark-border;
+            color: $dark-text;
+
+            &::placeholder {
+              color: $dark-text-muted;
+            }
+
+            &:focus {
+              border-color: $dark-accent;
+            }
+          }
+        }
+
+        .newsletter-btn {
+          padding: 0.75rem 1rem;
+          background: $light-accent;
+          color: white;
+          border: none;
+          border-radius: 10px;
+          font-size: 0.9rem;
+          font-weight: 600;
+          cursor: pointer;
+          transition: all 0.2s ease;
+
+          &:hover {
+            background: $light-accent-hover;
+            transform: translateY(-1px);
+          }
+
+          &:active {
+            transform: translateY(0);
+          }
+
+          @include dark-mode {
+            background: $dark-accent;
+
+            &:hover {
+              background: $dark-accent-hover;
+            }
+          }
+        }
+      }
+    }
+  }
+}

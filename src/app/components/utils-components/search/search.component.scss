@@ -1,0 +1,69 @@
+@use '../../../../styles/theme' as *;
+
+:host {
+  display: block;
+
+  .search-container {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex: 1;
+    max-width: 320px;
+    padding: 0.65rem 1rem;
+    background: $light-bg-secondary;
+    border: 1px solid $light-border;
+    border-radius: 12px;
+    transition: all 0.2s ease;
+
+    &:focus-within {
+      border-color: $light-accent;
+      box-shadow: 0 0 0 3px rgba($light-accent, 0.1);
+    }
+
+    @media (max-width: 640px) {
+      display: none;
+    }
+
+    @include dark-mode {
+      background: $dark-bg-secondary;
+      border-color: $dark-border;
+
+      &:focus-within {
+        border-color: $dark-accent;
+        box-shadow: 0 0 0 3px rgba($dark-accent, 0.15);
+      }
+    }
+
+    .search-icon {
+      width: 18px;
+      height: 18px;
+      color: $light-text-muted;
+      flex-shrink: 0;
+
+      @include dark-mode {
+        color: $dark-text-muted;
+      }
+    }
+
+    .search-input {
+      flex: 1;
+      border: none;
+      background: transparent;
+      font-size: 0.9rem;
+      color: $light-text;
+      outline: none;
+
+      &::placeholder {
+        color: $light-text-muted;
+      }
+
+      @include dark-mode {
+        color: $dark-text;
+
+        &::placeholder {
+          color: $dark-text-muted;
+        }
+      }
+    }
+  }
+}

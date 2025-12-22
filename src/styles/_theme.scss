@@ -1,0 +1,38 @@
+// ========================================
+// Theme Variables - Shared across all components
+// ========================================
+
+// Light Theme
+$light-bg: #ffffff;
+$light-bg-secondary: #f8f9fa;
+$light-text: #1a1a2e;
+$light-text-muted: #6b7280;
+$light-border: #e5e7eb;
+$light-accent: #6366f1;
+$light-accent-hover: #4f46e5;
+
+// Dark Theme
+$dark-bg: #0f0f1a;
+$dark-bg-secondary: #1a1a2e;
+$dark-text: #f8f9fa;
+$dark-text-muted: #9ca3af;
+$dark-border: #2d2d44;
+$dark-accent: #818cf8;
+$dark-accent-hover: #a5b4fc;
+
+// ========================================
+// Dark Mode Mixin
+// Uses global data-theme attribute set on <html>
+// ========================================
+@mixin dark-mode {
+  :host-context([data-theme='dark']) & {
+    @content;
+  }
+}
+
+// For components that use .dark class directly (like header)
+@mixin dark-mode-class($class: '.dark') {
+  #{$class} & {
+    @content;
+  }
+}

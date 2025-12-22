@@ -1,0 +1,101 @@
+@use '../../../../styles/theme' as *;
+
+:host {
+  display: block;
+  min-height: 100vh;
+  background: $light-bg-secondary;
+
+  @include dark-mode {
+    background: $dark-bg;
+  }
+
+  .categories-page {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 2rem;
+
+    .categories-hero {
+      text-align: center;
+      padding: 3rem 0;
+
+      .page-title {
+        font-size: 2.5rem;
+        font-weight: 800;
+        color: $light-text;
+        margin-bottom: 0.5rem;
+
+        @include dark-mode {
+          color: $dark-text;
+        }
+      }
+
+      .page-subtitle {
+        font-size: 1.1rem;
+        color: $light-text-muted;
+
+        @include dark-mode {
+          color: $dark-text-muted;
+        }
+      }
+    }
+
+    .categories-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+
+      .category-card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 2rem;
+        background: $light-bg;
+        border: 1px solid $light-border;
+        border-radius: 16px;
+        text-decoration: none;
+        transition: all 0.2s ease;
+
+        &:hover {
+          transform: translateY(-4px);
+          border-color: $light-accent;
+          box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+        }
+
+        @include dark-mode {
+          background: $dark-bg-secondary;
+          border-color: $dark-border;
+
+          &:hover {
+            border-color: $dark-accent;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+          }
+        }
+
+        .category-icon {
+          font-size: 2.5rem;
+          margin-bottom: 1rem;
+        }
+
+        .category-name {
+          font-size: 1.1rem;
+          font-weight: 700;
+          color: $light-text;
+          margin-bottom: 0.5rem;
+
+          @include dark-mode {
+            color: $dark-text;
+          }
+        }
+
+        .category-count {
+          font-size: 0.85rem;
+          color: $light-text-muted;
+
+          @include dark-mode {
+            color: $dark-text-muted;
+          }
+        }
+      }
+    }
+  }
+}

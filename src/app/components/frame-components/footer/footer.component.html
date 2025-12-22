@@ -1,0 +1,49 @@
+<footer class="footer">
+  <div class="footer-content">
+    <!-- Brand Section -->
+    <div class="footer-brand">
+      <a href="/" class="logo">
+        <span class="logo-icon">◆</span>
+        <span class="logo-text">DevBlog</span>
+      </a>
+      <p class="brand-description">
+        Sharing insights about web development, design, and technology. Join our community of
+        developers.
+      </p>
+      <div class="social-links">
+        @for (social of socialLinks; track social.name) {
+          <a
+            [href]="social.url"
+            class="social-link"
+            target="_blank"
+            [attr.aria-label]="social.name"
+          >
+            {{ social.icon }}
+          </a>
+        }
+      </div>
+    </div>
+
+    <!-- Links Sections -->
+    <div class="footer-links">
+      @for (section of footerLinks; track section.title) {
+        <div class="link-section">
+          <h4 class="section-title">{{ section.title }}</h4>
+          <ul class="link-list">
+            @for (link of section.links; track link.label) {
+              <li>
+                <a [href]="link.url" class="footer-link">{{ link.label }}</a>
+              </li>
+            }
+          </ul>
+        </div>
+      }
+    </div>
+  </div>
+
+  <!-- Bottom Bar -->
+  <div class="footer-bottom">
+    <p class="copyright">© {{ currentYear }} DevBlog. All rights reserved.</p>
+    <p class="made-with">Made with ❤️ for developers</p>
+  </div>
+</footer>

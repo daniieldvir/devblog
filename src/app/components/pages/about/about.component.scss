@@ -1,0 +1,81 @@
+@use '../../../../styles/theme' as *;
+
+:host {
+  display: block;
+  min-height: 100vh;
+  background: $light-bg-secondary;
+
+  @include dark-mode {
+    background: $dark-bg;
+  }
+
+  .about-page {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+
+    .about-hero {
+      text-align: center;
+      padding: 3rem 0;
+
+      .page-title {
+        font-size: 2.5rem;
+        font-weight: 800;
+        color: $light-text;
+        margin-bottom: 0.5rem;
+
+        @include dark-mode {
+          color: $dark-text;
+        }
+      }
+
+      .page-subtitle {
+        font-size: 1.1rem;
+        color: $light-text-muted;
+
+        @include dark-mode {
+          color: $dark-text-muted;
+        }
+      }
+    }
+
+    .about-content {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+
+      .about-card {
+        padding: 2rem;
+        background: $light-bg;
+        border: 1px solid $light-border;
+        border-radius: 16px;
+
+        @include dark-mode {
+          background: $dark-bg-secondary;
+          border-color: $dark-border;
+        }
+
+        h2 {
+          font-size: 1.25rem;
+          font-weight: 700;
+          color: $light-accent;
+          margin-bottom: 1rem;
+
+          @include dark-mode {
+            color: $dark-accent;
+          }
+        }
+
+        p {
+          font-size: 1rem;
+          color: $light-text-muted;
+          line-height: 1.7;
+
+          @include dark-mode {
+            color: $dark-text-muted;
+          }
+        }
+      }
+    }
+  }
+}

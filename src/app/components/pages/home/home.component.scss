@@ -1,0 +1,123 @@
+@use '../../../../styles/theme' as *;
+
+:host {
+  display: block;
+  min-height: 100vh;
+  background: $light-bg-secondary;
+
+  @include dark-mode {
+    background: $dark-bg;
+  }
+
+  .home-page {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+
+    .hero {
+      text-align: center;
+      padding: 4rem 2rem;
+
+      .hero-title {
+        font-size: 3rem;
+        font-weight: 800;
+        color: $light-text;
+        margin-bottom: 1rem;
+
+        @include dark-mode {
+          color: $dark-text;
+        }
+      }
+
+      .hero-subtitle {
+        font-size: 1.25rem;
+        color: $light-text-muted;
+        margin-bottom: 2rem;
+
+        @include dark-mode {
+          color: $dark-text-muted;
+        }
+      }
+
+      .hero-cta {
+        display: inline-block;
+        padding: 1rem 2rem;
+        background: $light-accent;
+        color: white;
+        text-decoration: none;
+        border-radius: 12px;
+        font-weight: 600;
+        transition: all 0.2s ease;
+
+        &:hover {
+          background: $light-accent-hover;
+          transform: translateY(-2px);
+        }
+
+        @include dark-mode {
+          background: $dark-accent;
+
+          &:hover {
+            background: $dark-accent-hover;
+          }
+        }
+      }
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      padding: 2rem 0;
+
+      .feature {
+        padding: 2rem;
+        background: $light-bg;
+        border: 1px solid $light-border;
+        border-radius: 16px;
+        text-align: center;
+        transition: all 0.2s ease;
+
+        &:hover {
+          transform: translateY(-4px);
+          box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+        }
+
+        @include dark-mode {
+          background: $dark-bg-secondary;
+          border-color: $dark-border;
+
+          &:hover {
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+          }
+        }
+
+        .feature-icon {
+          font-size: 2.5rem;
+          display: block;
+          margin-bottom: 1rem;
+        }
+
+        .feature-title {
+          font-size: 1.25rem;
+          font-weight: 700;
+          color: $light-text;
+          margin-bottom: 0.5rem;
+
+          @include dark-mode {
+            color: $dark-text;
+          }
+        }
+
+        .feature-desc {
+          font-size: 0.95rem;
+          color: $light-text-muted;
+
+          @include dark-mode {
+            color: $dark-text-muted;
+          }
+        }
+      }
+    }
+  }
+}

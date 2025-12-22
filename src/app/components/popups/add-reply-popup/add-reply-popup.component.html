@@ -1,0 +1,10 @@
+<div class="add-reply-popup">
+  <h3>Add Reply</h3>
+
+  <textarea #textareaRef type="text"></textarea>
+
+  <div class="add-reply-popup-actions">
+    <button (click)="closePopup()">Cancel</button>
+    <button (click)="addReply(textareaRef.value)">Add</button>
+  </div>
+</div>

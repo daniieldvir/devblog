@@ -1,0 +1,23 @@
+@if (commentsWithOwners()) {
+  <div class="comment-list">
+    @for (comment of commentsWithOwners(); track comment.id) {
+      <app-comment-preview
+        [comment]="comment"
+        (editCommentNewText)="onSaveNewText($event)"
+        (replyComment)="onReplyComment($event)"
+        (delete)="onDeleteComment($event)"
+      />
+    } @empty {
+      <p class="empty-state">No comments yet. Be the first to comment!</p>
+    }
+  </div>
+}
+@if (openAddReplyPopup()) {
+  <app-add-reply-popup [(openAddReplyPopup)]="openAddReplyPopup" (replyText)="onAddReply($event)" />
+}
+@if (openDeletePopup()) {
+  <app-delete-popup
+    [(openDeletePopup)]="openDeletePopup"
+    (deleteCommentClicked)="onConfirmDelete()"
+  />
+}

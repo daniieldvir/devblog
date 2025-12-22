@@ -1,0 +1,53 @@
+@use '../../../styles/theme' as *;
+
+:host {
+  display: block;
+  min-height: 100vh;
+  background: $light-bg-secondary;
+
+  @include dark-mode {
+    background: $dark-bg;
+  }
+
+  .blog-content {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+
+    @media (max-width: 768px) {
+      flex-direction: column;
+      padding: 1rem;
+    }
+
+    app-sidebar {
+      position: sticky;
+      top: 90px;
+      flex-shrink: 0;
+
+      @media (max-width: 768px) {
+        position: static;
+        width: 100%;
+      }
+    }
+
+    .main-content {
+      flex: 1;
+      min-width: 0;
+
+      .loading {
+        padding: 2rem;
+        text-align: center;
+        color: $light-text-muted;
+        font-size: 0.95rem;
+
+        @include dark-mode {
+          color: $dark-text-muted;
+        }
+      }
+    }
+  }
+}

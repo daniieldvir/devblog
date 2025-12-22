@@ -1,0 +1,362 @@
+[
+  {
+    "id": "1",
+    "parentCommentId": null,
+    "ownerId": 1,
+    "url": "https://i.pravatar.cc/150?img=5",
+    "txt": "Hello world!",
+    "createdAt": "2025-12-17T10:00:00.000Z",
+    "deletedAt": null
+  },
+  {
+    "id": "2",
+    "parentCommentId": null,
+    "ownerId": 2,
+    "url": "https://i.pravatar.cc/150?img=12",
+    "txt": "I love programming.",
+    "createdAt": "2025-12-17T09:30:00.000Z",
+    "deletedAt": null
+  },
+  {
+    "id": "3",
+    "parentCommentId": "1",
+    "ownerId": 3,
+    "url": "https://i.pravatar.cc/150?img=9",
+    "txt": "Me too!",
+    "createdAt": "2025-12-17T10:05:00.000Z",
+    "deletedAt": null
+  },
+  {
+    "id": "4",
+    "parentCommentId": "1",
+    "ownerId": 4,
+    "url": "https://i.pravatar.cc/150?img=33",
+    "txt": "Welcome to the forum!",
+    "createdAt": "2025-12-17T10:10:00.000Z",
+    "deletedAt": null
+  },
+  {
+    "id": "5",
+    "parentCommentId": "2",
+    "ownerId": 5,
+    "url": "https://i.pravatar.cc/150?img=16",
+    "txt": "Programming is fun.",
+    "createdAt": "2025-12-17T10:15:00.000Z",
+    "deletedAt": null
+  },
+  {
+    "id": "6",
+    "parentCommentId": null,
+    "ownerId": 6,
+    "url": "https://i.pravatar.cc/150?img=59",
+    "txt": "Does anyone know Angular?",
+    "createdAt": "2025-12-16T14:00:00.000Z",
+    "deletedAt": null
+  },
+  {
+    "id": "7",
+    "parentCommentId": "6",
+    "ownerId": 7,
+    "url": "https://i.pravatar.cc/150?img=20",
+    "txt": "Yes, I do!",
+    "createdAt": "2025-12-16T14:15:00.000Z",
+    "deletedAt": null
+  },
+  {
+    "id": "8",
+    "parentCommentId": "6",
+    "ownerId": 8,
+    "url": "https://i.pravatar.cc/150?img=51",
+    "txt": "Angular is great.",
+    "createdAt": "2025-12-16T14:30:00.000Z",
+    "deletedAt": null
+  },
+  {
+    "id": "9",
+    "parentCommentId": "3",
+    "ownerId": 9,
+    "url": "https://i.pravatar.cc/150?img=25",
+    "txt": "I prefer React though.",
+    "createdAt": "2025-12-15T12:00:00.000Z",
+    "deletedAt": null
+  },
+  {
+    "id": "10",
+    "parentCommentId": "4",
+    "ownerId": 10,
+    "url": "https://i.pravatar.cc/150?img=68",
+    "txt": "Nice to meet you!",
+    "createdAt": "2025-12-14T12:15:00.000Z",
+    "deletedAt": null
+  },
+  {
+    "id": "11",
+    "parentCommentId": "7",
+    "ownerId": 1,
+    "url": "https://i.pravatar.cc/150?img=5",
+    "txt": "Angular 17 has Signals now.",
+    "createdAt": "2025-12-10T12:30:00.000Z",
+    "deletedAt": null
+  },
+  {
+    "id": "12",
+    "parentCommentId": "8",
+    "ownerId": 2,
+    "url": "https://i.pravatar.cc/150?img=12",
+    "txt": "I just started learning Signals.",
+    "createdAt": "2025-12-05T12:45:00.000Z",
+    "deletedAt": null
+  },
+  {
+    "id": "13",
+    "parentCommentId": "10",
+    "ownerId": 3,
+    "url": "https://i.pravatar.cc/150?img=9",
+    "txt": "Welcome aboard!",
+    "createdAt": "2025-12-01T13:00:00.000Z",
+    "deletedAt": null
+  },
+  {
+    "id": "14",
+    "parentCommentId": "5",
+    "ownerId": 4,
+    "url": "https://i.pravatar.cc/150?img=33",
+    "txt": "I find loops tricky sometimes.",
+    "createdAt": "2025-11-25T13:15:00.000Z",
+    "deletedAt": null
+  },
+  {
+    "id": "15",
+    "parentCommentId": null,
+    "ownerId": 5,
+    "url": "https://i.pravatar.cc/150?img=16",
+    "txt": "I just finished a project.",
+    "createdAt": "2025-11-20T13:30:00.000Z",
+    "deletedAt": null
+  },
+  {
+    "id": "16",
+    "parentCommentId": "15",
+    "ownerId": 6,
+    "url": "https://i.pravatar.cc/150?img=59",
+    "txt": "Congrats!",
+    "createdAt": "2025-11-15T13:45:00.000Z",
+    "deletedAt": null
+  },
+  {
+    "id": "17",
+    "parentCommentId": "15",
+    "ownerId": 7,
+    "url": "https://i.pravatar.cc/150?img=20",
+    "txt": "What did you build?",
+    "createdAt": "2025-11-10T14:00:00.000Z",
+    "deletedAt": null
+  },
+  {
+    "id": "18",
+    "parentCommentId": "17",
+    "ownerId": 8,
+    "url": "https://i.pravatar.cc/150?img=51",
+    "txt": "I love your idea!",
+    "createdAt": "2025-11-05T14:15:00.000Z",
+    "deletedAt": null
+  },
+  {
+    "id": "19",
+    "parentCommentId": null,
+    "ownerId": 9,
+    "url": "https://i.pravatar.cc/150?img=25",
+    "txt": "Who's online?",
+    "createdAt": "2025-10-30T14:30:00.000Z",
+    "deletedAt": null
+  },
+  {
+    "id": "20",
+    "parentCommentId": "19",
+    "ownerId": 10,
+    "url": "https://i.pravatar.cc/150?img=68",
+    "txt": "I am!",
+    "createdAt": "2025-10-25T14:45:00.000Z",
+    "deletedAt": null
+  },
+  {
+    "id": "21",
+    "parentCommentId": "20",
+    "ownerId": 1,
+    "url": "https://i.pravatar.cc/150?img=5",
+    "txt": "Let's start a chat.",
+    "createdAt": "2025-10-20T15:00:00.000Z",
+    "deletedAt": null
+  },
+  {
+    "id": "22",
+    "parentCommentId": null,
+    "ownerId": 2,
+    "url": "https://i.pravatar.cc/150?img=12",
+    "txt": "I need help with CSS.",
+    "createdAt": "2025-10-15T15:15:00.000Z",
+    "deletedAt": null
+  },
+  {
+    "id": "23",
+    "parentCommentId": "22",
+    "ownerId": 3,
+    "url": "https://i.pravatar.cc/150?img=9",
+    "txt": "What do you need?",
+    "createdAt": "2025-10-10T15:30:00.000Z",
+    "deletedAt": null
+  },
+  {
+    "id": "24",
+    "parentCommentId": "22",
+    "ownerId": 4,
+    "url": "https://i.pravatar.cc/150?img=33",
+    "txt": "I can help too.",
+    "createdAt": "2025-10-05T15:45:00.000Z",
+    "deletedAt": null
+  },
+  {
+    "id": "25",
+    "parentCommentId": "23",
+    "ownerId": 5,
+    "url": "https://i.pravatar.cc/150?img=16",
+    "txt": "Try using flexbox.",
+    "createdAt": "2025-09-30T16:00:00.000Z",
+    "deletedAt": null
+  },
+  {
+    "id": "26",
+    "parentCommentId": "24",
+    "ownerId": 6,
+    "url": "https://i.pravatar.cc/150?img=59",
+    "txt": "Grid is better in some cases.",
+    "createdAt": "2025-09-25T16:15:00.000Z",
+    "deletedAt": null
+  },
+  {
+    "id": "27",
+    "parentCommentId": null,
+    "ownerId": 7,
+    "url": "https://i.pravatar.cc/150?img=20",
+    "txt": "Any favorite coding snacks?",
+    "createdAt": "2025-09-20T16:30:00.000Z",
+    "deletedAt": null
+  },
+  {
+    "id": "28",
+    "parentCommentId": "27",
+    "ownerId": 8,
+    "url": "https://i.pravatar.cc/150?img=51",
+    "txt": "Chips!",
+    "createdAt": "2025-09-15T16:45:00.000Z",
+    "deletedAt": null
+  },
+  {
+    "id": "29",
+    "parentCommentId": "27",
+    "ownerId": 9,
+    "url": "https://i.pravatar.cc/150?img=25",
+    "txt": "Coffee for me.",
+    "createdAt": "2025-09-10T17:00:00.000Z",
+    "deletedAt": null
+  },
+  {
+    "id": "30",
+    "parentCommentId": "27",
+    "ownerId": 10,
+    "url": "https://i.pravatar.cc/150?img=68",
+    "txt": "Tea is fine.",
+    "createdAt": "2025-09-05T17:15:00.000Z",
+    "deletedAt": null
+  },
+  {
+    "id": "31",
+    "parentCommentId": "28",
+    "ownerId": 1,
+    "url": "https://i.pravatar.cc/150?img=5",
+    "txt": "I like chocolate too.",
+    "createdAt": "2025-08-30T17:30:00.000Z",
+    "deletedAt": null
+  },
+  {
+    "id": "32",
+    "parentCommentId": null,
+    "ownerId": 2,
+    "url": "https://i.pravatar.cc/150?img=12",
+    "txt": "Let's collaborate on a project.",
+    "createdAt": "2025-08-25T17:45:00.000Z",
+    "deletedAt": null
+  },
+  {
+    "id": "33",
+    "parentCommentId": "32",
+    "ownerId": 3,
+    "url": "https://i.pravatar.cc/150?img=9",
+    "txt": "Sounds good!",
+    "createdAt": "2025-08-20T18:00:00.000Z",
+    "deletedAt": null
+  },
+  {
+    "id": "34",
+    "parentCommentId": "32",
+    "ownerId": 4,
+    "url": "https://i.pravatar.cc/150?img=33",
+    "txt": "I'm in.",
+    "createdAt": "2025-08-15T18:15:00.000Z",
+    "deletedAt": null
+  },
+  {
+    "id": "35",
+    "parentCommentId": "34",
+    "ownerId": 5,
+    "url": "https://i.pravatar.cc/150?img=16",
+    "txt": "I can do frontend.",
+    "createdAt": "2025-08-10T18:30:00.000Z",
+    "deletedAt": null
+  },
+  {
+    "id": "36",
+    "parentCommentId": "34",
+    "ownerId": 6,
+    "url": "https://i.pravatar.cc/150?img=59",
+    "txt": "Backend is my specialty.",
+    "createdAt": "2025-08-05T18:45:00.000Z",
+    "deletedAt": null
+  },
+  {
+    "id": "37",
+    "parentCommentId": null,
+    "ownerId": 7,
+    "url": "https://i.pravatar.cc/150?img=20",
+    "txt": "Check out this tutorial.",
+    "createdAt": "2025-07-30T19:00:00.000Z",
+    "deletedAt": null
+  },
+  {
+    "id": "38",
+    "parentCommentId": "37",
+    "ownerId": 8,
+    "url": "https://i.pravatar.cc/150?img=51",
+    "txt": "Very helpful!",
+    "createdAt": "2025-07-25T19:15:00.000Z",
+    "deletedAt": null
+  },
+  {
+    "id": "39",
+    "parentCommentId": "37",
+    "ownerId": 9,
+    "url": "https://i.pravatar.cc/150?img=25",
+    "txt": "Thanks for sharing.",
+    "createdAt": "2025-07-20T19:30:00.000Z",
+    "deletedAt": null
+  },
+  {
+    "id": "40",
+    "parentCommentId": "39",
+    "ownerId": 10,
+    "url": "https://i.pravatar.cc/150?img=68",
+    "txt": "This will save me time.",
+    "createdAt": "2025-07-15T19:45:00.000Z",
+    "deletedAt": null
+  }
+]

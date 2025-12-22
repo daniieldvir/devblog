@@ -1,0 +1,12 @@
+<app-header (searchQueryChange)="onSearchChange($event)" />
+<div class="blog-content">
+  <app-sidebar />
+  <div class="main-content">
+    @if (isLoading()) {
+      <p class="loading">Loading...</p>
+    } @else {
+      <app-comment-list [commentsWithOwners]="filteredUserComments()" />
+    }
+  </div>
+</div>
+<app-footer />

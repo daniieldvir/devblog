@@ -1,0 +1,57 @@
+@use '../../../../styles/theme' as *;
+
+:host {
+  display: block;
+
+  .comment-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-shrink: 0;
+
+    ::ng-deep app-button {
+      .button {
+        min-width: auto;
+        padding: 0.4rem 0.75rem;
+        font-size: 0.8rem;
+        font-weight: 500;
+        background: $light-bg-secondary;
+        color: $light-text-muted;
+        border: 1px solid $light-border;
+        border-radius: 6px;
+        transition: all 0.2s ease;
+
+        &:hover {
+          background: $light-accent;
+          color: white;
+          border-color: $light-accent;
+          transform: none;
+        }
+
+        &.edited {
+          background: $light-accent;
+          color: white;
+          border-color: $light-accent;
+        }
+
+        @include dark-mode {
+          background: $dark-bg;
+          color: $dark-text-muted;
+          border-color: $dark-border;
+
+          &:hover {
+            background: $dark-accent;
+            color: $dark-bg;
+            border-color: $dark-accent;
+          }
+
+          &.edited {
+            background: $dark-accent;
+            color: $dark-bg;
+            border-color: $dark-accent;
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,55 @@
+<aside class="sidebar">
+  <!-- About Section -->
+  <section class="sidebar-section about">
+    <img [src]="author()?.url" [alt]="author()?.displayName" class="avatar" />
+    <h3 class="author-name">{{ author()?.displayName }}</h3>
+    <p class="author-bio">{{ author()?.bio }}</p>
+    <div class="social-links">
+      @for (social of socialLinks; track social.name) {
+        <a [href]="social.url" class="social-link" target="_blank" [attr.aria-label]="social.name">
+          {{ social.icon }}
+        </a>
+      }
+    </div>
+  </section>
+
+  <!-- Categories -->
+  <section class="sidebar-section">
+    <h4 class="section-title">Categories</h4>
+    <ul class="category-list">
+      @for (category of categories; track category.name) {
+        <li class="category-item">
+          <a href="#" class="category-link">
+            <span class="category-name">{{ category.name }}</span>
+            <span class="category-count">{{ category.count }}</span>
+          </a>
+        </li>
+      }
+    </ul>
+  </section>
+
+  <!-- Recent Posts -->
+  <section class="sidebar-section">
+    <h4 class="section-title">Recent Posts</h4>
+    <ul class="recent-posts">
+      @for (post of recentPosts; track post.title) {
+        <li class="post-item">
+          <a href="#" class="post-link">
+            <span class="post-title">{{ post.title }}</span>
+            <span class="post-date">{{ post.date }}</span>
+          </a>
+        </li>
+      }
+    </ul>
+  </section>
+
+  <!-- Newsletter -->
+  <section class="sidebar-section newsletter">
+    <h4 class="section-title">Newsletter</h4>
+    <p class="newsletter-text">Get the latest posts delivered to your inbox.</p>
+    <form class="newsletter-form">
+      <input type="email" placeholder="your@email.com" class="newsletter-input" />
+      <button type="submit" class="newsletter-btn">Subscribe</button>
+    </form>
+  </section>
+</aside>
