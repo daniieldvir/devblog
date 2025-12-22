@@ -16,9 +16,9 @@ export interface Comment {
 
 export interface CommentWithOwner extends Comment {
   owner: User;
-  replys: CommentWithOwner[];
+  replies: CommentWithOwner[];
 }
 
 export interface NestedCommentWithOwner extends CommentWithOwner {
-  replys: NestedCommentWithOwner[];
+  replies: NestedCommentWithOwner[];
 }

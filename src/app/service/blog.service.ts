@@ -21,7 +21,7 @@ export class BlogService {
     const sortNewest = (arr: NestedCommentWithOwner[]): NestedCommentWithOwner[] =>
       arr
         .sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime())
-        .map((c) => ({ ...c, replys: sortNewest(c.replys) }));
+        .map((c) => ({ ...c, replies: sortNewest(c.replies) }));
 
     return forkJoin({ users: this.getUsers(), comments: this.getComments() }).pipe(
       map(({ users, comments }) => {
@@ -29,15 +29,15 @@ export class BlogService {
         const commentsMap = new Map<string, NestedCommentWithOwner>();
 
         comments.forEach((c) =>
-          commentsMap.set(c.id, { ...c, owner: usersMap.get(c.ownerId)!, replys: [] }),
+          commentsMap.set(c.id, { ...c, owner: usersMap.get(c.ownerId)!, replies: [] })
         );
 
         commentsMap.forEach((c) => {
-          if (c.parentCommentId) commentsMap.get(c.parentCommentId)?.replys.push(c);
+          if (c.parentCommentId) commentsMap.get(c.parentCommentId)?.replies.push(c);
         });
 
         return sortNewest([...commentsMap.values()].filter((c) => !c.parentCommentId));
-      }),
+      })
     );
   }
 }

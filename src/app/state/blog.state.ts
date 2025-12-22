@@ -45,7 +45,7 @@ export class BlogState {
         catchError((error) => {
           ctx.patchState({ loading: false });
           return throwError(() => error);
-        }),
+        })
       );
     }
   }
@@ -62,12 +62,12 @@ export class BlogState {
       ownerId: onlineUser.id,
       deletedAt: null,
       parentCommentId: action.comment.id,
-      replys: [],
+      replies: [],
     };
     const updatedComments = this.addReplyToComment(
       state.commentsWithOwners,
       action.comment.id,
-      newReply,
+      newReply
     );
     ctx.patchState({ commentsWithOwners: updatedComments });
     this.saveToLocalStorage(updatedComments);
@@ -79,7 +79,7 @@ export class BlogState {
     const updatedComments = this.updateCommentInTree(
       state.commentsWithOwners,
       action.commentId,
-      action.newText,
+      action.newText
     );
     ctx.patchState({ commentsWithOwners: updatedComments });
     this.saveToLocalStorage(updatedComments);
@@ -101,19 +101,19 @@ export class BlogState {
   private addReplyToComment(
     comments: NestedCommentWithOwner[],
     parentId: string,
-    newReply: NestedCommentWithOwner,
+    newReply: NestedCommentWithOwner
   ): NestedCommentWithOwner[] {
     return comments.map((comment) => {
       if (comment.id === parentId) {
         return {
           ...comment,
-          replys: [...comment.replys, newReply],
+          replies: [...comment.replies, newReply],
         };
       }
-      if (comment.replys?.length) {
+      if (comment.replies?.length) {
         return {
           ...comment,
-          replys: this.addReplyToComment(comment.replys, parentId, newReply),
+          replies: this.addReplyToComment(comment.replies, parentId, newReply),
         };
       }
       return comment;
@@ -123,7 +123,7 @@ export class BlogState {
   private updateCommentInTree(
     comments: NestedCommentWithOwner[],
     commentId: string,
-    newText: string,
+    newText: string
   ): NestedCommentWithOwner[] {
     return comments.map((comment) => {
       if (comment.id === commentId) {
@@ -133,10 +133,10 @@ export class BlogState {
           createdAt: new Date().toISOString(),
         };
       }
-      if (comment.replys?.length) {
+      if (comment.replies?.length) {
         return {
           ...comment,
-          replys: this.updateCommentInTree(comment.replys, commentId, newText),
+          replies: this.updateCommentInTree(comment.replies, commentId, newText),
         };
       }
       return comment;
@@ -145,19 +145,19 @@ export class BlogState {
 
   private deleteCommentFromTree(
     comments: NestedCommentWithOwner[],
-    commentId: string,
+    commentId: string
   ): NestedCommentWithOwner[] {
     return comments
       .map((comment) => {
         if (comment.id === commentId) {
-          // Return null to filter out this comment and all its replys
+          // Return null to filter out this comment and all its replies
           return null;
         }
-        // Recursively search in replys
-        if (comment.replys?.length) {
+        // Recursively search in replies
+        if (comment.replies?.length) {
           return {
             ...comment,
-            replys: this.deleteCommentFromTree(comment.replys, commentId),
+            replies: this.deleteCommentFromTree(comment.replies, commentId),
           };
         }
         return comment;
@@ -165,11 +165,11 @@ export class BlogState {
       .filter((comment): comment is NestedCommentWithOwner => comment !== null);
   }
 
-  private deleteAllReplys(replys: NestedCommentWithOwner[]): NestedCommentWithOwner[] {
-    return replys.map((reply) => ({
+  private deleteAllReplys(replies: NestedCommentWithOwner[]): NestedCommentWithOwner[] {
+    return replies.map((reply) => ({
       ...reply,
       deletedAt: new Date().toISOString(),
-      replys: this.deleteAllReplys(reply.replys || []),
+      replies: this.deleteAllReplys(reply.replies || []),
     }));
   }
 }

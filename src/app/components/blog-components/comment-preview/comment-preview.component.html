@@ -1,44 +1,44 @@
 <div class="comment-preview-container">
   @if (comment()) {
-    <div class="comment-preview">
-      <div class="comment-preview-header">
-        <div class="comment-preview-header-info">
-          <img [src]="comment()?.owner?.url" [alt]="comment()?.owner?.displayName" />
-          <h3>{{ comment()?.owner?.displayName }}</h3>
-        </div>
-        <span>{{ comment()?.createdAt | timeAgo }}</span>
+  <div class="comment-preview">
+    <div class="comment-preview-header">
+      <div class="comment-preview-header-info">
+        <img [src]="comment()?.owner?.url" [alt]="comment()?.owner?.displayName" />
+        <h3>{{ comment()?.owner?.displayName }}</h3>
       </div>
-      <div class="comment-preview-content">
-        <input
-          type="text"
-          [class.edited]="editedMode()"
-          [value]="editedMode() ? editedText() : comment()?.txt"
-          [disabled]="!editedMode()"
-          (input)="onTextChange($event)"
-        />
+      <span>{{ comment()?.createdAt | timeAgo }}</span>
+    </div>
+    <div class="comment-preview-content">
+      <input
+        type="text"
+        [class.edited]="editedMode()"
+        [value]="editedMode() ? editedText() : comment()?.txt"
+        [disabled]="!editedMode()"
+        (input)="onTextChange($event)"
+      />
 
-        <app-comment-actions
-          [editedMode]="editedMode()"
-          [replysCount]="comment()?.replys?.length ?? 0"
-          (editClicked)="edit(comment()?.id!, !!editedMode() ? 'Save' : 'Edit')"
-          (replyClicked)="reply(comment()!)"
-          (deleteClicked)="deleteComment(comment()?.id!)"
-          (toggleReplysClicked)="toggleReplys()"
-        />
-      </div>
+      <app-comment-actions
+        [editedMode]="editedMode()"
+        [replysCount]="comment()?.replies?.length ?? 0"
+        (editClicked)="edit(comment()?.id!, !!editedMode() ? 'Save' : 'Edit')"
+        (replyClicked)="reply(comment()!)"
+        (deleteClicked)="deleteComment(comment()?.id!)"
+        (toggleReplysClicked)="toggleReplys()"
+      />
+    </div>
 
-      @if (showReplys()) {
-        <div class="replys">
-          @for (reply of comment()?.replys; track reply.id) {
-            <app-comment-preview
-              class="reply"
-              [comment]="reply"
-              (replyComment)="replyComment.emit($event)"
-              (delete)="deleteComment(reply.id!)"
-            />
-          }
-        </div>
+    @if (showReplys()) {
+    <div class="replies">
+      @for (reply of comment()?.replies; track reply.id) {
+      <app-comment-preview
+        class="reply"
+        [comment]="reply"
+        (replyComment)="replyComment.emit($event)"
+        (delete)="deleteComment(reply.id!)"
+      />
       }
     </div>
+    }
+  </div>
   }
 </div>

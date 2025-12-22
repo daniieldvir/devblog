@@ -27,6 +27,6 @@
 
   <app-button [label]="'Add Reply'" (onClick)="replyClicked.emit()" />
   @if (replysCount()) {
-    <app-button [label]="'Replys: ' + replysCount()" (onClick)="toggleReplysClicked.emit()" />
+  <app-button [label]="'Replies: ' + replysCount()" (onClick)="toggleReplysClicked.emit()" />
   }
 </div>
