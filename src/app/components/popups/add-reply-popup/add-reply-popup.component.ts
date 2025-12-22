@@ -1,6 +1,4 @@
 import { Component, model, output } from '@angular/core';
-import { select } from '@ngxs/store';
-import { BlogSelectors } from '../../../state/blog.selectors';
 
 @Component({
   selector: 'app-add-reply-popup',
@@ -12,7 +10,6 @@ import { BlogSelectors } from '../../../state/blog.selectors';
 export class AddReplyPopupComponent {
   public replyText = output<string>();
   public openAddReplyPopup = model<boolean>(false);
-  protected readonly firstUser = select(BlogSelectors.firstUser);
 
   protected closePopup() {
     this.openAddReplyPopup.set(false);

@@ -1,7 +1,7 @@
 import { Component, inject, input, signal } from '@angular/core';
 import { Store } from '@ngxs/store';
 import { CommentWithOwner } from '../../../models/models';
-import { BlogActions } from '../../../state/blog.action';
+import { ForumActions } from '../../../state/forum.action';
 import { AddReplyPopupComponent } from '../../popups/add-reply-popup/add-reply-popup.component';
 import { DeletePopupComponent } from '../../popups/delete-popup/delete-popup.component';
 import { CommentPreviewComponent } from '../comment-preview/comment-preview.component';
@@ -24,7 +24,7 @@ export class CommentListComponent {
   private readonly selectedCommentId = signal<string | null>(null);
 
   protected onSaveNewText(data: { commentId: string; newText: string }) {
-    this.store.dispatch(new BlogActions.EditComment(data.commentId, data.newText));
+    this.store.dispatch(new ForumActions.EditComment(data.commentId, data.newText));
   }
 
   protected onReplyComment(comment: CommentWithOwner) {
@@ -36,7 +36,7 @@ export class CommentListComponent {
     if (!this.selectedComment()) {
       return;
     }
-    this.store.dispatch(new BlogActions.AddReplyComment(this.selectedComment()!, value));
+    this.store.dispatch(new ForumActions.AddReplyComment(this.selectedComment()!, value));
   }
 
   protected onDeleteComment(commentId: string) {
@@ -47,7 +47,7 @@ export class CommentListComponent {
   protected onConfirmDelete() {
     const commentId = this.selectedCommentId();
     if (commentId) {
-      this.store.dispatch(new BlogActions.DeleteComment(commentId));
+      this.store.dispatch(new ForumActions.DeleteComment(commentId));
       this.openDeletePopup.set(false);
       this.selectedCommentId.set(null);
     }

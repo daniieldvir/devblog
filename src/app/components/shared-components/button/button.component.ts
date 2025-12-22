@@ -26,7 +26,7 @@ export class ButtonComponent implements AfterContentInit {
         Array.from(button.childNodes).some(
           (node: any) =>
             node.nodeType === Node.ELEMENT_NODE ||
-            (node.nodeType === Node.TEXT_NODE && node.textContent?.trim()),
+            (node.nodeType === Node.TEXT_NODE && node.textContent?.trim())
         );
       this.hasContent.set(hasProjectedContent);
     }

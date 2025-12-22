@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { select } from '@ngxs/store';
-import { BlogSelectors } from '../../../state/blog.selectors';
+import { ForumSelectors } from '../../../state/forum.selectors';
 
 @Component({
   selector: 'app-sidebar',
@@ -10,7 +10,7 @@ import { BlogSelectors } from '../../../state/blog.selectors';
   styleUrl: './sidebar.component.scss',
 })
 export class SidebarComponent {
-  author = select(BlogSelectors.slices.onlineUser);
+  author = select(ForumSelectors.slices.onlineUser);
 
   categories = [
     { name: 'Technology', count: 24 },

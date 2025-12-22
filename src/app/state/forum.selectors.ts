@@ -1,20 +1,20 @@
 import { createPropertySelectors, createSelector } from '@ngxs/store';
 import { CommentWithOwner } from '../models/models';
-import { BlogState, BlogStateModel } from './blog.state';
+import { ForumState, ForumStateModel } from './forum.state';
 
-export class BlogSelectors {
-  static slices = createPropertySelectors<BlogStateModel>(BlogState);
+export class ForumSelectors {
+  static slices = createPropertySelectors<ForumStateModel>(ForumState);
 
-  static firstUser = createSelector([BlogState], (state) => state.commentsWithOwners[0]);
+  static firstUser = createSelector([ForumState], (state) => state.commentsWithOwners[0]);
 
   static filteredUserComments(searchQuery: string) {
-    return createSelector([BlogState], (state) => {
+    return createSelector([ForumState], (state) => {
       if (!searchQuery) {
         return state.commentsWithOwners;
       } else {
         const query = searchQuery.toLowerCase();
         return state.commentsWithOwners.filter((comment: CommentWithOwner) =>
-          comment.owner.displayName.toLowerCase().includes(query),
+          comment.owner.displayName.toLowerCase().includes(query)
         );
       }
     });

@@ -11,12 +11,12 @@ import { RouterLink } from '@angular/router';
 export class FooterComponent {
   currentYear = new Date().getFullYear();
 
-  footerLinks = [
+  protected readonly footerLinks = [
     {
       title: 'Navigation',
       links: [
         { label: 'Home', url: '/' },
-        { label: 'Blog', url: '/blog' },
+        { label: 'Forum', url: '/forum' },
         { label: 'Categories', url: '/categories' },
         { label: 'About', url: '/about' },
       ],
@@ -40,7 +40,7 @@ export class FooterComponent {
     },
   ];
 
-  socialLinks = [
+  protected readonly socialLinks = [
     { name: 'Twitter', icon: 'X', url: 'https://twitter.com' },
     { name: 'GitHub', icon: 'GH', url: 'https://github.com' },
     { name: 'LinkedIn', icon: 'in', url: 'https://linkedin.com' },

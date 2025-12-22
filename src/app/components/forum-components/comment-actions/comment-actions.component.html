@@ -1,0 +1,18 @@
+<div class="comment-actions">
+  <app-button [editedMode]="editedMode()" (onClick)="editClicked.emit()">
+    @if (editedMode()) {
+    <ng-icon name="heroCheck" [style.width.px]="20" [style.height.px]="20" />
+    } @else {
+    <ng-icon name="heroPencil" [style.width.px]="20" [style.height.px]="20" />
+    }
+  </app-button>
+
+  <app-button (onClick)="deleteClicked.emit()">
+    <ng-icon name="heroTrash" [style.width.px]="20" [style.height.px]="20" />
+  </app-button>
+
+  <app-button [label]="'Add Reply'" (onClick)="replyClicked.emit()" />
+  @if (repliesCount()) {
+  <app-button [label]="'Replies: ' + repliesCount()" (onClick)="toggleReplysClicked.emit()" />
+  }
+</div>

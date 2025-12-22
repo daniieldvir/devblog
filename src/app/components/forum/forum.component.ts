@@ -1,29 +1,29 @@
 import { Component, computed, inject, signal } from '@angular/core';
 import { select, Store } from '@ngxs/store';
-import { BlogActions } from '../../state/blog.action';
-import { BlogSelectors } from '../../state/blog.selectors';
-import { CommentListComponent } from '../blog-components/comment-list/comment-list.component';
+import { ForumActions } from '../../state/forum.action';
+import { ForumSelectors } from '../../state/forum.selectors';
+import { CommentListComponent } from '../forum-components/comment-list/comment-list.component';
 import { FooterComponent } from '../frame-components/footer/footer.component';
 import { HeaderComponent } from '../frame-components/header/header.component';
 import { SidebarComponent } from '../frame-components/sidebar/sidebar.component';
 
 @Component({
-  selector: 'app-blog',
+  selector: 'app-forum',
   standalone: true,
   imports: [CommentListComponent, HeaderComponent, SidebarComponent, FooterComponent],
-  templateUrl: './blog.component.html',
-  styleUrl: './blog.component.scss',
+  templateUrl: './forum.component.html',
+  styleUrl: './forum.component.scss',
 })
-export class BlogComponent {
+export class ForumComponent {
   private readonly store = inject(Store);
 
-  protected readonly isLoading = select(BlogSelectors.slices.loading);
+  protected readonly isLoading = select(ForumSelectors.slices.loading);
 
   protected readonly searchQuery = signal('');
   protected readonly isMobileMenuOpen = signal(false);
 
   protected readonly filteredUserComments = computed(() => {
-    return this.store.selectSignal(BlogSelectors.filteredUserComments(this.searchQuery()))();
+    return this.store.selectSignal(ForumSelectors.filteredUserComments(this.searchQuery()))();
   });
 
   onSearchChange(query: string): void {
@@ -40,6 +40,6 @@ export class BlogComponent {
   }
 
   ngOnInit() {
-    this.store.dispatch(new BlogActions.LoadBlogData());
+    this.store.dispatch(new ForumActions.LoadBlogData());
   }
 }

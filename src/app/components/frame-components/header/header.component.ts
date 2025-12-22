@@ -1,13 +1,14 @@
 import { Component, inject, OnInit, output, signal } from '@angular/core';
 import { NavigationEnd, Router, RouterLink, RouterLinkActive } from '@angular/router';
+import { NgIconsModule } from '@ng-icons/core';
 import { filter } from 'rxjs';
-import { ButtonComponent } from '../../utils-components/button/button.component';
-import { SearchComponent } from '../../utils-components/search/search.component';
+import { ButtonComponent } from '../../shared-components/button/button.component';
+import { SearchComponent } from '../../shared-components/search/search.component';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [ButtonComponent, SearchComponent, RouterLink, RouterLinkActive],
+  imports: [ButtonComponent, SearchComponent, RouterLink, RouterLinkActive, NgIconsModule],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
 })
@@ -22,19 +23,19 @@ export class HeaderComponent implements OnInit {
 
   navLinks = [
     { label: 'Home', path: '/' },
-    { label: 'Blog', path: '/blog' },
+    { label: 'Forum', path: '/forum' },
     { label: 'Categories', path: '/categories' },
     { label: 'About', path: '/about' },
   ];
 
   ngOnInit(): void {
-    // Check if we're on blog page on route changes
+    // Check if we're on forum page on route changes
     this.router.events.pipe(filter((event) => event instanceof NavigationEnd)).subscribe(() => {
-      const isBlog = this.router.url === '/blog' || this.router.url.startsWith('/blog');
+      const isBlog = this.router.url === '/forum' || this.router.url.startsWith('/forum');
       this.isBlogPage.set(isBlog);
     });
     // Initial check
-    const isBlog = this.router.url === '/blog' || this.router.url.startsWith('/blog');
+    const isBlog = this.router.url === '/forum' || this.router.url.startsWith('/forum');
     this.isBlogPage.set(isBlog);
   }
 

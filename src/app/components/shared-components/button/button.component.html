@@ -1,6 +1,6 @@
 <button class="button" [class.edited]="editedMode()" (click)="onClick.emit()">
   <ng-content></ng-content>
   @if (!hasContent()) {
-    <span [innerHTML]="label()"></span>
+  <span [innerHTML]="label()"></span>
   }
 </button>

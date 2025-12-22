@@ -1,4 +1,4 @@
-import { Component, input, output, signal } from '@angular/core';
+import { Component, computed, input, output, signal } from '@angular/core';
 import { CommentWithOwner } from '../../../models/models';
 import { TimeAgoPipe } from '../../../pipes/time-pipe';
 import { CommentActionsComponent } from '../comment-actions/comment-actions.component';
@@ -17,8 +17,10 @@ export class CommentPreviewComponent {
   delete = output<string>();
 
   showReplys = signal(false);
-  editedMode = signal<boolean>(false);
+  editMode = signal<boolean>(false);
   editedText = signal<string>('');
+
+  protected inputText = computed(() => (this.editMode() ? this.editedText() : this.comment()?.txt));
 
   protected toggleReplys() {
     this.showReplys.set(!this.showReplys());
@@ -37,12 +39,12 @@ export class CommentPreviewComponent {
     this.editedText.set(input.value);
   }
 
-  protected edit(commentId: string, action: string) {
-    if (action === 'Edit') {
+  protected edit(commentId: string) {
+    if (!this.editMode()) {
       this.editedText.set(this.comment()?.txt ?? '');
-      this.editedMode.set(true);
-    } else if (action === 'Save') {
-      this.editedMode.set(false);
+      this.editMode.set(true);
+    } else {
+      this.editMode.set(false);
       this.editCommentNewText.emit({ commentId: commentId, newText: this.editedText() });
     }
   }

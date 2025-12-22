@@ -6,7 +6,7 @@ import { Comment, NestedCommentWithOwner, User } from '../models/models';
 @Injectable({
   providedIn: 'root',
 })
-export class BlogService {
+export class ForumService {
   private readonly http = inject(HttpClient);
 
   public getUsers(): Observable<User[]> {

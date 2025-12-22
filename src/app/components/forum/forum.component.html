@@ -1,6 +1,6 @@
 <app-header (searchQueryChange)="onSearchChange($event)" (menuToggle)="onSidebarToggle()" />
 
-<div class="blog-content">
+<div class="forum-content">
   <app-sidebar [class.mobile-open]="isMobileMenuOpen()" />
   <div class="main-content">
     @if (isLoading()) {

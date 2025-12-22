@@ -2,18 +2,18 @@ import { inject, Injectable } from '@angular/core';
 import { Action, State, StateContext } from '@ngxs/store';
 import { catchError, of, tap, throwError } from 'rxjs';
 import { NestedCommentWithOwner, User } from '../models/models';
-import { BlogService } from '../service/blog.service';
-import { BlogActions } from './blog.action';
+import { ForumService } from '../service/forum.service';
+import { ForumActions } from './forum.action';
 
-export interface BlogStateModel {
+export interface ForumStateModel {
   commentsWithOwners: NestedCommentWithOwner[];
   loading: boolean;
   onlineUser: User;
 }
 
 @Injectable()
-@State<BlogStateModel>({
-  name: 'blog',
+@State<ForumStateModel>({
+  name: 'forum',
   defaults: {
     commentsWithOwners: [],
     loading: false,
@@ -25,12 +25,12 @@ export interface BlogStateModel {
     },
   },
 })
-export class BlogState {
-  private readonly blogService = inject(BlogService);
+export class ForumState {
+  private readonly forumService = inject(ForumService);
   private readonly STORAGE_KEY = 'blog_comments';
 
-  @Action(BlogActions.LoadBlogData)
-  loadBlogData(ctx: StateContext<BlogStateModel>) {
+  @Action(ForumActions.LoadBlogData)
+  loadBlogData(ctx: StateContext<ForumStateModel>) {
     ctx.patchState({ loading: true });
     const storedComments = localStorage.getItem(this.STORAGE_KEY);
 
@@ -38,8 +38,8 @@ export class BlogState {
       ctx.patchState({ commentsWithOwners: JSON.parse(storedComments), loading: false });
       return of(JSON.parse(storedComments));
     } else {
-      return this.blogService.getCommentsWithOwners().pipe(
-        tap((commentsWithOwners) => {
+      return this.forumService.getCommentsWithOwners().pipe(
+        tap((commentsWithOwners: NestedCommentWithOwner[]) => {
           ctx.patchState({ commentsWithOwners, loading: false });
         }),
         catchError((error) => {
@@ -50,8 +50,8 @@ export class BlogState {
     }
   }
 
-  @Action(BlogActions.AddReplyComment)
-  addReplyComment(ctx: StateContext<BlogStateModel>, action: BlogActions.AddReplyComment) {
+  @Action(ForumActions.AddReplyComment)
+  addReplyComment(ctx: StateContext<ForumStateModel>, action: ForumActions.AddReplyComment) {
     const state = ctx.getState();
     const onlineUser = state.onlineUser;
     const newReply: NestedCommentWithOwner = {
@@ -73,8 +73,8 @@ export class BlogState {
     this.saveToLocalStorage(updatedComments);
   }
 
-  @Action(BlogActions.EditComment)
-  editComment(ctx: StateContext<BlogStateModel>, action: BlogActions.EditComment) {
+  @Action(ForumActions.EditComment)
+  editComment(ctx: StateContext<ForumStateModel>, action: ForumActions.EditComment) {
     const state = ctx.getState();
     const updatedComments = this.updateCommentInTree(
       state.commentsWithOwners,
@@ -85,8 +85,8 @@ export class BlogState {
     this.saveToLocalStorage(updatedComments);
   }
 
-  @Action(BlogActions.DeleteComment)
-  deleteComment(ctx: StateContext<BlogStateModel>, action: BlogActions.DeleteComment) {
+  @Action(ForumActions.DeleteComment)
+  deleteComment(ctx: StateContext<ForumStateModel>, action: ForumActions.DeleteComment) {
     const state = ctx.getState();
     const updatedComments = this.deleteCommentFromTree(state.commentsWithOwners, action.commentId);
 

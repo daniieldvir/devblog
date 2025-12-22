@@ -1,10 +1,11 @@
 import { Component, output, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { NgIconsModule } from '@ng-icons/core';
 
 @Component({
   selector: 'app-search',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule, NgIconsModule],
   templateUrl: './search.component.html',
   styleUrl: './search.component.scss',
 })
