@@ -1,18 +1,22 @@
 @use '../../../../styles/theme' as *;
 :host {
+  display: block;
+  position: fixed;
+  top: 80px;
+  right: 0;
+  z-index: 1200;
+
   .mobile-menu {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
-
-    position: absolute;
     background: $light-bg;
-    right: 0;
 
     border: 1px solid $light-border;
     border-radius: 8px;
     padding: 0.5rem;
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+
     @include dark-mode {
       background: $dark-bg;
       border: 1px solid $dark-border;
