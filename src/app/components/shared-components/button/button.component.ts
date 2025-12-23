@@ -13,7 +13,7 @@ export class ButtonComponent implements AfterContentInit {
   editedMode = input<boolean>(false);
   onClick = output<void>();
 
-  hasContent = signal(false);
+  protected readonly hasContent = signal(false);
 
   constructor(private elementRef: ElementRef) {}
 

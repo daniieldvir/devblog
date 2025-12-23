@@ -1,5 +1,6 @@
 import { createPropertySelectors, createSelector } from '@ngxs/store';
-import { CommentWithOwner } from '../models/models';
+import { Article } from '../models/article.models';
+import { CommentWithOwner } from '../models/comment.models';
 import { ForumState, ForumStateModel } from './forum.state';
 
 export class ForumSelectors {
@@ -16,6 +17,21 @@ export class ForumSelectors {
         return state.commentsWithOwners.filter((comment: CommentWithOwner) =>
           comment.owner.displayName.toLowerCase().includes(query)
         );
+      }
+    });
+  }
+
+  static categories = createSelector([ForumState], (state) => {
+    const all = state.articles.map((article: Article) => article.category);
+    return [...new Set(all)];
+  });
+
+  static articlesByCategory(category: string) {
+    return createSelector([ForumState], (state) => {
+      if (category === 'All') {
+        return state.articles;
+      } else {
+        return state.articles.filter((article: Article) => article.category === category);
       }
     });
   }

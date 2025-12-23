@@ -3,6 +3,7 @@ import { ApplicationConfig, provideBrowserGlobalErrorListeners } from '@angular/
 import { provideRouter } from '@angular/router';
 import { provideIcons } from '@ng-icons/core';
 import {
+  heroBars3,
   heroCheck,
   heroMagnifyingGlass,
   heroMoon,
@@ -30,6 +31,7 @@ export const appConfig: ApplicationConfig = {
       heroSun,
       heroMoon,
       heroMagnifyingGlass,
+      heroBars3,
     }),
   ],
 };

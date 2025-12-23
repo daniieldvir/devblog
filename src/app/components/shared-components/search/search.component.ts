@@ -13,7 +13,7 @@ export class SearchComponent {
   searchQuery = signal('');
   searchQueryChange = output<string>();
 
-  onInputChange(value: string): void {
+  protected onInputChange(value: string): void {
     this.searchQuery.set(value);
     this.searchQueryChange.emit(value);
   }

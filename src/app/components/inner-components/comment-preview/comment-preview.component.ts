@@ -1,5 +1,5 @@
 import { Component, computed, input, output, signal } from '@angular/core';
-import { CommentWithOwner } from '../../../models/models';
+import { CommentWithOwner } from '../../../models/comment.models';
 import { TimeAgoPipe } from '../../../pipes/time-pipe';
 import { CommentActionsComponent } from '../comment-actions/comment-actions.component';
 
@@ -16,9 +16,9 @@ export class CommentPreviewComponent {
   replyComment = output<CommentWithOwner>();
   delete = output<string>();
 
-  showReplys = signal(false);
-  editMode = signal<boolean>(false);
-  editedText = signal<string>('');
+  protected readonly showReplys = signal(false);
+  protected readonly editMode = signal<boolean>(false);
+  protected readonly editedText = signal<string>('');
 
   protected inputText = computed(() => (this.editMode() ? this.editedText() : this.comment()?.txt));
 

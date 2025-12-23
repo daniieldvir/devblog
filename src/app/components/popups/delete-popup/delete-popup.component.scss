@@ -17,16 +17,12 @@
     display: flex;
     flex-direction: column;
     gap: 20px;
-    box-shadow:
-      0 10px 25px rgba(0, 0, 0, 0.15),
-      0 4px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15), 0 4px 10px rgba(0, 0, 0, 0.1);
 
     @include dark-mode {
       background: $dark-bg-secondary;
       border-color: $dark-border;
-      box-shadow:
-        0 10px 25px rgba(0, 0, 0, 0.5),
-        0 4px 10px rgba(0, 0, 0, 0.3);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5), 0 4px 10px rgba(0, 0, 0, 0.3);
     }
 
     h3 {
@@ -117,6 +113,58 @@
             border-color: #dc2626;
             box-shadow: 0 2px 8px rgba(239, 68, 68, 0.4);
           }
+        }
+      }
+    }
+  }
+
+  // Mobile layout
+  @media (max-width: 640px) {
+    position: fixed;
+    inset: 0;
+    left: 0;
+    top: 0;
+    transform: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    z-index: 1000;
+
+    .delete-popup {
+      width: 100%;
+      max-width: 100%;
+      min-height: auto;
+      max-height: 100%;
+      padding: 16px;
+      border-radius: 12px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25), 0 4px 10px rgba(0, 0, 0, 0.2);
+      overflow: hidden;
+
+      h3 {
+        font-size: 1.25rem;
+      }
+
+      > div:first-of-type {
+        gap: 8px;
+
+        p {
+          font-size: 0.95rem;
+        }
+
+        span {
+          font-size: 0.85rem;
+        }
+      }
+
+      .add-reply-popup-actions {
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        gap: 8px;
+
+        button {
+          flex: 1;
+          min-width: 0;
         }
       }
     }

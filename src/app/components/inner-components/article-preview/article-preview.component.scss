@@ -1,0 +1,196 @@
+@use '../../../../styles/theme' as *;
+
+:host {
+  display: block;
+  height: 100%;
+
+  .article-preview-container {
+    height: 100%;
+
+    .article-preview {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      background: $light-bg;
+      border: 1px solid $light-border;
+      border-radius: 12px;
+      overflow: hidden;
+      transition: all 0.2s ease;
+
+      @media (max-width: 768px) {
+        border-radius: 10px;
+      }
+
+      &:hover {
+        border-color: rgba($light-accent, 0.3);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+      }
+
+      @include dark-mode {
+        background: $dark-bg-secondary;
+        border-color: $dark-border;
+
+        &:hover {
+          border-color: rgba($dark-accent, 0.3);
+          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        }
+      }
+
+      .article-preview-image {
+        width: 100%;
+        height: 200px;
+        overflow: hidden;
+        background: $light-bg-secondary;
+
+        @include dark-mode {
+          background: $dark-bg;
+        }
+
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          transition: transform 0.3s ease;
+        }
+
+        &:hover img {
+          transform: scale(1.05);
+        }
+      }
+
+      .article-preview-content {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        padding: 1.5rem;
+
+        @media (max-width: 768px) {
+          padding: 1.25rem;
+        }
+
+        .article-preview-header {
+          margin-bottom: 1rem;
+
+          .article-preview-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+
+            .article-category {
+              padding: 0.25rem 0.75rem;
+              background: $light-accent;
+              color: white;
+              border-radius: 8px;
+              font-weight: 600;
+              font-size: 0.75rem;
+              white-space: nowrap;
+
+              @include dark-mode {
+                background: $dark-accent;
+              }
+            }
+
+            .article-date {
+              font-size: 0.8rem;
+              color: $light-text-muted;
+              white-space: nowrap;
+
+              @include dark-mode {
+                color: $dark-text-muted;
+              }
+            }
+          }
+        }
+
+        .article-preview-title {
+          font-size: 1.25rem;
+          font-weight: 700;
+          color: $light-text;
+          margin: 0 0 0.75rem 0;
+          line-height: 1.4;
+          display: -webkit-box;
+          -webkit-line-clamp: 2;
+          line-clamp: 2;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+
+          @media (max-width: 768px) {
+            font-size: 1.1rem;
+          }
+
+          @include dark-mode {
+            color: $dark-text;
+          }
+        }
+
+        .article-preview-excerpt {
+          font-size: 0.95rem;
+          color: $light-text-muted;
+          line-height: 1.6;
+          margin: 0 0 1rem 0;
+          display: -webkit-box;
+          -webkit-line-clamp: 3;
+          line-clamp: 3;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+
+          @media (max-width: 768px) {
+            font-size: 0.875rem;
+          }
+
+          @include dark-mode {
+            color: $dark-text-muted;
+          }
+        }
+
+        .article-preview-footer {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 1rem;
+          margin-top: auto;
+          padding-top: 1rem;
+          border-top: 1px solid $light-border;
+
+          @include dark-mode {
+            border-color: $dark-border;
+          }
+
+          .article-preview-tags {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+
+            .article-tag {
+              padding: 0.25rem 0.5rem;
+              background: $light-bg-secondary;
+              color: $light-text-muted;
+              border-radius: 6px;
+              font-size: 0.75rem;
+              font-weight: 500;
+              white-space: nowrap;
+
+              @include dark-mode {
+                background: $dark-bg;
+                color: $dark-text-muted;
+              }
+            }
+          }
+
+          .article-preview-stats {
+            display: flex;
+            gap: 1rem;
+            font-size: 0.8rem;
+            color: $light-text-muted;
+
+            @include dark-mode {
+              color: $dark-text-muted;
+            }
+          }
+        }
+      }
+    }
+  }
+}

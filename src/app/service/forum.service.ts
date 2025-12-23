@@ -1,7 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { forkJoin, map, Observable } from 'rxjs';
-import { Comment, NestedCommentWithOwner, User } from '../models/models';
+import { Article } from '../models/article.models';
+import { Comment, NestedCommentWithOwner } from '../models/comment.models';
+import { User } from '../models/user.models';
 
 @Injectable({
   providedIn: 'root',
@@ -15,6 +17,10 @@ export class ForumService {
 
   public getComments(): Observable<Comment[]> {
     return this.http.get<Comment[]>('assets/mock-data/comments-mock-data.json');
+  }
+
+  public getArticles(): Observable<Article[]> {
+    return this.http.get<Article[]>('assets/mock-data/articles-mock-data.json');
   }
 
   public getCommentsWithOwners(): Observable<NestedCommentWithOwner[]> {

@@ -121,88 +121,26 @@
       flex-shrink: 0;
     }
 
-    // Sidebar Toggle Button - Only show on mobile
+    .theme-toggle-btn,
+    .menue-icon,
     .sidebar-toggle-btn {
-      display: none;
-
-      @media (max-width: 768px) {
-        display: block;
-      }
-
-      ::ng-deep .button {
-        min-width: auto;
-        width: 44px;
-        height: 44px;
-        padding: 0;
-        background: $light-bg-secondary;
-        border: none;
-        border-radius: 12px;
-        transition: all 0.2s ease;
-        overflow: hidden;
-
-        &:hover {
-          background: $light-border;
-          transform: scale(1.05);
-          border-color: transparent;
-        }
-
-        &:active {
-          transform: scale(0.95);
-        }
-
-        @include dark-mode {
-          background: $dark-bg-secondary;
-
-          &:hover {
-            background: $dark-border;
-            border-color: transparent;
-          }
-        }
-      }
-
-      .sidebar-toggle-icon {
-        width: 24px;
-        height: 24px;
-        color: $light-text;
-
-        @include dark-mode {
-          color: $dark-text;
-        }
-      }
-    }
-
-    // Theme Toggle
-    .theme-toggle-btn {
       flex-shrink: 0;
+      --button-width: 44px;
+      --button-min-width: auto;
+      --button-height: 44px;
+      --button-padding: 0;
+      --button-background: #{$light-bg-secondary};
+      --button-border: none;
+      --button-border-radius: 12px;
+      --button-hover-background: #{$light-border};
+      --button-hover-border-color: transparent;
+      --button-hover-transform: scale(1.05);
+      --button-active-transform: scale(0.95);
 
-      ::ng-deep .button {
-        min-width: auto;
-        width: 44px;
-        height: 44px;
-        padding: 0;
-        background: $light-bg-secondary;
-        border: none;
-        border-radius: 12px;
-        transition: all 0.2s ease;
-
-        &:hover {
-          background: $light-border;
-          transform: scale(1.05);
-          border-color: transparent;
-        }
-
-        &:active {
-          transform: scale(0.95);
-        }
-
-        @include dark-mode {
-          background: $dark-bg-secondary;
-
-          &:hover {
-            background: $dark-border;
-            border-color: transparent;
-          }
-        }
+      @include dark-mode {
+        --button-background: #{$dark-bg-secondary};
+        --button-hover-background: #{$dark-border};
+        --button-hover-border-color: transparent;
       }
 
       .theme-icon {
@@ -213,6 +151,13 @@
         @include dark-mode {
           color: $dark-accent;
         }
+      }
+    }
+
+    .menue-icon {
+      display: none;
+      @media (max-width: 768px) {
+        display: block;
       }
     }
   }

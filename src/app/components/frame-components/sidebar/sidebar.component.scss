@@ -144,42 +144,63 @@
       flex-direction: column;
       gap: 0.25rem;
 
-      .category-item {
-        .category-link {
+      .category-name {
+        font-size: 0.9rem;
+        font-weight: 500;
+        color: $light-text-muted;
+        line-height: 1.4;
+        transition: color 0.2s ease;
+        padding-bottom: 0.6rem;
+      }
+    }
+
+    // Articles
+    .article-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+
+      .article-item {
+        padding: 0.6rem;
+
+        &:hover {
+          color: $light-accent;
+          background: rgba($light-accent, 0.08);
+
+          .article-count {
+            background: $light-accent;
+            color: white;
+          }
+        }
+
+        @include dark-mode {
+          color: $dark-text-muted;
+
+          &:hover {
+            color: $dark-accent;
+            background: rgba($dark-accent, 0.1);
+          }
+        }
+
+        .article-link {
           display: flex;
           align-items: center;
           justify-content: space-between;
-          padding: 0.6rem 0.75rem;
+
           border-radius: 8px;
           text-decoration: none;
           color: $light-text-muted;
           transition: all 0.2s ease;
 
-          &:hover {
-            color: $light-accent;
-            background: rgba($light-accent, 0.08);
-
-            .category-count {
-              background: $light-accent;
-              color: white;
-            }
-          }
-
-          @include dark-mode {
-            color: $dark-text-muted;
-
-            &:hover {
-              color: $dark-accent;
-              background: rgba($dark-accent, 0.1);
-            }
-          }
-
-          .category-name {
+          .article-category-name {
             font-size: 0.9rem;
             font-weight: 500;
           }
 
-          .category-count {
+          .article-count {
             font-size: 0.75rem;
             font-weight: 600;
             padding: 0.2rem 0.5rem;
@@ -216,14 +237,6 @@
           margin: -0.5rem;
           border-radius: 8px;
           transition: background 0.2s ease;
-
-          &:hover {
-            background: rgba($light-accent, 0.05);
-
-            .post-title {
-              color: $light-accent;
-            }
-          }
 
           @include dark-mode {
             &:hover .post-title {

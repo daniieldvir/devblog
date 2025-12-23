@@ -1,7 +1,9 @@
 import { inject, Injectable } from '@angular/core';
 import { Action, State, StateContext } from '@ngxs/store';
 import { catchError, of, tap, throwError } from 'rxjs';
-import { NestedCommentWithOwner, User } from '../models/models';
+import { Article } from '../models/article.models';
+import { NestedCommentWithOwner } from '../models/comment.models';
+import { User } from '../models/user.models';
 import { ForumService } from '../service/forum.service';
 import { ForumActions } from './forum.action';
 
@@ -9,6 +11,8 @@ export interface ForumStateModel {
   commentsWithOwners: NestedCommentWithOwner[];
   loading: boolean;
   onlineUser: User;
+  articles: Article[];
+  articlesLoading: boolean;
 }
 
 @Injectable()
@@ -23,6 +27,8 @@ export interface ForumStateModel {
       url: 'https://i.pravatar.cc/150?img=5',
       bio: 'Full-stack developer passionate about clean code and great UX. Writing about web dev, design, and tech.',
     },
+    articles: [],
+    articlesLoading: false,
   },
 })
 export class ForumState {
@@ -48,6 +54,20 @@ export class ForumState {
         })
       );
     }
+  }
+
+  @Action(ForumActions.LoadArticles)
+  loadArticles(ctx: StateContext<ForumStateModel>) {
+    ctx.patchState({ articlesLoading: true });
+    return this.forumService.getArticles().pipe(
+      tap((articles: Article[]) => {
+        ctx.patchState({ articles, articlesLoading: false });
+      }),
+      catchError((error) => {
+        ctx.patchState({ articlesLoading: false });
+        return throwError(() => error);
+      })
+    );
   }
 
   @Action(ForumActions.AddReplyComment)

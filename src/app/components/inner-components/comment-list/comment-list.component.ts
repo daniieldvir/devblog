@@ -1,6 +1,6 @@
 import { Component, inject, input, signal } from '@angular/core';
 import { Store } from '@ngxs/store';
-import { CommentWithOwner } from '../../../models/models';
+import { CommentWithOwner } from '../../../models/comment.models';
 import { ForumActions } from '../../../state/forum.action';
 import { AddReplyPopupComponent } from '../../popups/add-reply-popup/add-reply-popup.component';
 import { DeletePopupComponent } from '../../popups/delete-popup/delete-popup.component';

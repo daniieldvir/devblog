@@ -1,0 +1,56 @@
+@use '../../../../styles/theme' as *;
+:host {
+  .mobile-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+    position: absolute;
+    background: $light-bg;
+    right: 0;
+
+    border: 1px solid $light-border;
+    border-radius: 8px;
+    padding: 0.5rem;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+    @include dark-mode {
+      background: $dark-bg;
+      border: 1px solid $dark-border;
+      box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+    }
+
+    .mobile-menu-link {
+      padding: 0.5rem 1rem;
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: $light-text-muted;
+      text-decoration: none;
+      border-radius: 8px;
+      transition: all 0.2s ease;
+
+      &:hover {
+        color: $light-accent;
+        background: rgba($light-accent, 0.08);
+      }
+
+      &.active {
+        color: $light-accent;
+        background: rgba($light-accent, 0.12);
+        font-weight: 600;
+      }
+
+      @include dark-mode {
+        color: $dark-text-muted;
+
+        &:hover {
+          color: $dark-accent;
+        }
+
+        &.active {
+          color: $dark-accent;
+          background: rgba($dark-accent, 0.15);
+        }
+      }
+    }
+  }
+}

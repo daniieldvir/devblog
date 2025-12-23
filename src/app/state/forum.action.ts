@@ -1,8 +1,12 @@
-import { CommentWithOwner } from '../models/models';
+import { CommentWithOwner } from '../models/comment.models';
 
 export namespace ForumActions {
   export class LoadBlogData {
     static readonly type = '[Forum] Load Forum Data';
+  }
+
+  export class LoadArticles {
+    static readonly type = '[Forum] Load Articles';
   }
 
   export class AddReplyComment {

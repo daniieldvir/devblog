@@ -1,9 +1,4 @@
-export interface User {
-  id: number;
-  displayName: string;
-  url: string;
-  bio: string;
-}
+import { User } from './user.models';
 
 export interface Comment {
   id: string;

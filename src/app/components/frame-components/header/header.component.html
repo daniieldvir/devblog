@@ -46,5 +46,13 @@
       <ng-icon name="heroMoon" class="theme-icon" [style.width.px]="24" [style.height.px]="24" />
       }
     </app-button>
+
+    <app-button class="menue-icon" (onClick)="onMobileMenuToggle()">
+      <ng-icon name="heroBars3" class="menue-icon" [style.width.px]="24" [style.height.px]="24" />
+    </app-button>
   </div>
 </header>
+
+@if (isMobileMenuOpen()) {
+<app-mobile-menu [links]="navLinks" />
+}

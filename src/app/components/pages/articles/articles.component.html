@@ -1,0 +1,26 @@
+<app-header />
+<main class="articles-page">
+  <section class="articles-header">
+    <h1 class="page-title">Articles</h1>
+    <p class="page-subtitle">Browse all our articles and tutorials</p>
+  </section>
+
+  <div class="chip-filter-container">
+    @for (category of categoriesWithAll(); track category) {
+    <app-chip-filter [chipLabel]="category" [(selectedChip)]="selectedChip" />
+    }
+  </div>
+
+  @if (isLoading()) {
+  <div class="loading">
+    <p>Loading articles...</p>
+  </div>
+  } @else {
+  <section class="articles-grid">
+    @for (article of articlesByCategory(); track article.id) {
+    <app-article-preview [article]="article" />
+    }
+  </section>
+  }
+</main>
+<app-footer />

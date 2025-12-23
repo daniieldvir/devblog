@@ -1,7 +1,8 @@
-<app-header (searchQueryChange)="onSearchChange($event)" (menuToggle)="onSidebarToggle()" />
+<app-header (searchQueryChange)="onSearchChange($event)" (sidebarToggle)="onSidebarToggle()" />
 
 <div class="forum-content">
-  <app-sidebar [class.mobile-open]="isMobileMenuOpen()" />
+  <app-sidebar [class.mobile-open]="isSidebarOpen()" />
+
   <div class="main-content">
     @if (isLoading()) {
     <p class="loading">Loading...</p>

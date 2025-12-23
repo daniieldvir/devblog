@@ -6,12 +6,12 @@
   </section>
 
   <section class="categories-grid">
-    @for (category of categories; track category.name) {
-      <a href="#" class="category-card">
-        <span class="category-icon">{{ category.icon }}</span>
-        <h3 class="category-name">{{ category.name }}</h3>
-        <span class="category-count">{{ category.count }} articles</span>
-      </a>
+    @for (category of categoriesWithIcons(); track category.name) {
+    <a [routerLink]="['/articles']" [state]="{ category: category.name }" class="category-card">
+      <span class="category-icon">{{ category.icon }}</span>
+      <h3 class="category-name">{{ category.name }}</h3>
+      <span class="category-count">{{ category.count }} articles</span>
+    </a>
     }
   </section>
 </main>

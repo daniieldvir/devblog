@@ -1,0 +1,32 @@
+<div class="article-preview-container">
+  @if (article(); as article) {
+  <div class="article-preview">
+    @if (article.imageUrl) {
+    <div class="article-preview-image">
+      <img [src]="article.imageUrl" [alt]="article.title" />
+    </div>
+    }
+    <div class="article-preview-content">
+      <div class="article-preview-header">
+        <div class="article-preview-meta">
+          <span class="article-category">{{ article.category }}</span>
+          <span class="article-date">{{ article.createdAt | timeAgo }}</span>
+        </div>
+      </div>
+      <h2 class="article-preview-title">{{ article.title }}</h2>
+      <p class="article-preview-excerpt">{{ article.excerpt }}</p>
+      <div class="article-preview-footer">
+        <div class="article-preview-tags">
+          @for (tag of article.tags.slice(0, 3); track tag) {
+          <span class="article-tag">{{ tag }}</span>
+          }
+        </div>
+        <div class="article-preview-stats">
+          <span class="article-read-time">{{ article.readTime }} min read</span>
+          <span class="article-views">{{ article.views }} views</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  }
+</div>

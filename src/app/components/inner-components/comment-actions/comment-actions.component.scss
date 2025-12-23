@@ -1,0 +1,62 @@
+@use '../../../../styles/theme' as *;
+
+:host {
+  display: block;
+
+  .comment-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-shrink: 0;
+    flex-wrap: wrap;
+
+    @media (max-width: 768px) {
+      gap: 0.375rem;
+      width: 100%;
+      justify-content: flex-start;
+    }
+
+    app-button {
+      --button-width: auto;
+      --button-min-width: auto;
+      --button-height: auto;
+      --button-padding: 0.4rem 0.75rem;
+      --button-background: #{$light-bg-secondary};
+      --button-color: #{$light-text-muted};
+      --button-border: 1px solid #{$light-border};
+      --button-border-radius: 6px;
+      --button-transition: all 0.2s ease;
+      --button-hover-background: #{$light-accent};
+      --button-hover-color: white;
+      --button-hover-border-color: #{$light-accent};
+      --button-hover-transform: none;
+      --button-active-transform: none;
+
+      @media (max-width: 768px) {
+        --button-padding: 0.35rem 0.625rem;
+      }
+
+      @include dark-mode {
+        --button-background: #{$dark-bg};
+        --button-color: #{$dark-text-muted};
+        --button-border: 1px solid #{$dark-border};
+        --button-hover-background: #{$dark-accent};
+        --button-hover-color: #{$dark-bg};
+        --button-hover-border-color: #{$dark-accent};
+      }
+
+      // Edited state - keep special styling
+      .button.edited {
+        background: $light-accent;
+        color: white;
+        border-color: $light-accent;
+
+        @include dark-mode {
+          background: $dark-accent;
+          color: $dark-bg;
+          border-color: $dark-accent;
+        }
+      }
+    }
+  }
+}

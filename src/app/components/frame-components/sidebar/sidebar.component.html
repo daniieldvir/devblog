@@ -13,15 +13,15 @@
     </div>
   </section>
 
-  <!-- Categories -->
+  <!-- Articles -->
   <section class="sidebar-section">
     <h4 class="section-title">Categories</h4>
-    <ul class="category-list">
-      @for (category of categories; track category.name) {
-      <li class="category-item">
-        <a href="#" class="category-link">
-          <span class="category-name">{{ category.name }}</span>
-          <span class="category-count">{{ category.count }}</span>
+    <ul class="article-list">
+      @for (category of articlesByCategory(); track category.name) {
+      <li class="article-item">
+        <a [routerLink]="['/articles']" [state]="{ category: category.name }" class="article-link">
+          <span class="article-category-name">{{ category.name }}</span>
+          <span class="article-count">{{ category.count }}</span>
         </a>
       </li>
       }
@@ -32,12 +32,12 @@
   <section class="sidebar-section">
     <h4 class="section-title">Recent Posts</h4>
     <ul class="recent-posts">
-      @for (post of recentPosts; track post.title) {
+      @for (post of recentPosts(); track post.title) {
       <li class="post-item">
-        <a href="#" class="post-link">
+        <div class="post-link">
           <span class="post-title">{{ post.title }}</span>
-          <span class="post-date">{{ post.date }}</span>
-        </a>
+          <span class="post-date">{{ post.date | timeAgo }}</span>
+        </div>
       </li>
       }
     </ul>

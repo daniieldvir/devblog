@@ -1,0 +1,8 @@
+<button
+  class="chip-filter"
+  type="button"
+  (click)="onChipClick()"
+  [class.selected]="selectedChip() === chipLabel()"
+>
+  <p>{{ chipLabel() }}</p>
+</button>
