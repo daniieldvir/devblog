@@ -1,6 +1,9 @@
 <app-header (searchQueryChange)="onSearchChange($event)" (sidebarToggle)="onSidebarToggle()" />
 
 <div class="forum-content">
+  @if (isSidebarOpen()) {
+  <div class="mobile-overlay" (click)="onSidebarToggle()"></div>
+  }
   <app-sidebar [class.mobile-open]="isSidebarOpen()" />
 
   <div class="main-content">

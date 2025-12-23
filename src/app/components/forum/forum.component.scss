@@ -19,6 +19,8 @@
     padding: 2rem;
 
     @media (max-width: 768px) {
+      position: relative;
+      z-index: 1100;
       flex-direction: column;
       padding: 1rem;
       gap: 1rem;
@@ -41,7 +43,7 @@
         transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         border-radius: 0;
         border: none;
-        border-right: 1px solid $light-border;
+
         overflow-y: auto;
 
         @include dark-mode {
@@ -51,6 +53,19 @@
         &.mobile-open {
           transform: translateX(0);
         }
+      }
+    }
+
+    .mobile-overlay {
+      display: none;
+
+      @media (max-width: 768px) {
+        display: block;
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.35);
+        backdrop-filter: blur(2px);
+        z-index: 900;
       }
     }
 
