@@ -5,9 +5,11 @@ import { provideIcons } from '@ng-icons/core';
 import {
   heroBars3,
   heroCheck,
+  heroChevronLeft,
   heroMagnifyingGlass,
   heroMoon,
   heroPencil,
+  heroPlus,
   heroSun,
   heroTrash,
   heroUserCircle,
@@ -32,6 +34,8 @@ export const appConfig: ApplicationConfig = {
       heroMoon,
       heroMagnifyingGlass,
       heroBars3,
+      heroPlus,
+      heroChevronLeft,
     }),
   ],
 };

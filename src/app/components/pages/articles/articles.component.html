@@ -18,7 +18,7 @@
   } @else {
   <section class="articles-grid">
     @for (article of articlesByCategory(); track article.id) {
-    <app-article-preview [article]="article" />
+    <app-article-preview [article]="article" (click)="navigateToArticle(article)" />
     }
   </section>
   }

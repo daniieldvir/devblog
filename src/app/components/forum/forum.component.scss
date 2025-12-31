@@ -20,7 +20,7 @@
 
     @media (max-width: 768px) {
       position: relative;
-      z-index: 1100;
+      z-index: 200;
       flex-direction: column;
       padding: 1rem;
       gap: 1rem;
@@ -38,7 +38,7 @@
         width: 280px;
         max-width: 85vw;
         height: 100vh;
-        z-index: 1000;
+        z-index: 300;
         transform: translateX(-100%);
         transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         border-radius: 0;
@@ -65,7 +65,7 @@
         inset: 0;
         background: rgba(0, 0, 0, 0.35);
         backdrop-filter: blur(2px);
-        z-index: 900;
+        z-index: 100;
       }
     }
 
@@ -90,6 +90,48 @@
         @include dark-mode {
           color: $dark-text-muted;
         }
+      }
+    }
+  }
+
+  .add-comment-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 500;
+
+    app-button {
+      --button-width: 45px;
+      --button-height: 45px;
+      --button-min-width: 45px;
+      --button-border-radius: 50%;
+      --button-padding: 0;
+      --button-background: #6366f1;
+      --button-color: #ffffff;
+      --button-border: none;
+      --button-hover-background: #4f46e5;
+      --button-hover-color: #ffffff;
+      --button-hover-border-color: transparent;
+      --button-hover-transform: scale(1.1);
+      --button-active-transform: scale(0.95);
+      --button-transition: all 0.2s ease;
+
+      @include dark-mode {
+        --button-background: #818cf8;
+        --button-color: #0f0f1a;
+        --button-hover-background: #a5b4fc;
+        --button-hover-color: #0f0f1a;
+      }
+    }
+
+    @media (max-width: 768px) {
+      bottom: 16px;
+      right: 16px;
+
+      app-button {
+        --button-width: 48px;
+        --button-height: 48px;
+        --button-min-width: 48px;
       }
     }
   }

@@ -1,4 +1,4 @@
-import { Component, ElementRef, model, output, viewChild } from '@angular/core';
+import { Component, ElementRef, input, model, output, viewChild } from '@angular/core';
 
 @Component({
   selector: 'app-add-reply-popup',
@@ -10,6 +10,7 @@ import { Component, ElementRef, model, output, viewChild } from '@angular/core';
 export class AddReplyPopupComponent {
   protected readonly textarea = viewChild<ElementRef<HTMLTextAreaElement>>('textareaRef');
 
+  public type = input<string>('Reply');
   public replyText = output<string>();
   public openAddReplyPopup = model<boolean>(false);
 

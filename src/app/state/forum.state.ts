@@ -9,6 +9,7 @@ import { ForumActions } from './forum.action';
 
 export interface ForumStateModel {
   commentsWithOwners: NestedCommentWithOwner[];
+  users: User[];
   loading: boolean;
   onlineUser: User;
   articles: Article[];
@@ -20,6 +21,7 @@ export interface ForumStateModel {
   name: 'forum',
   defaults: {
     commentsWithOwners: [],
+    users: [],
     loading: false,
     onlineUser: {
       id: 1,
@@ -59,9 +61,11 @@ export class ForumState {
   @Action(ForumActions.LoadArticles)
   loadArticles(ctx: StateContext<ForumStateModel>) {
     ctx.patchState({ articlesLoading: true });
+
     return this.forumService.getArticles().pipe(
       tap((articles: Article[]) => {
         ctx.patchState({ articles, articlesLoading: false });
+        ctx.dispatch(new ForumActions.GetUsers());
       }),
       catchError((error) => {
         ctx.patchState({ articlesLoading: false });
@@ -70,10 +74,20 @@ export class ForumState {
     );
   }
 
+  @Action(ForumActions.GetUsers)
+  getUsers(ctx: StateContext<ForumStateModel>) {
+    return this.forumService.getUsers().pipe(
+      tap((users: User[]) => {
+        ctx.patchState({ users });
+      })
+    );
+  }
+
   @Action(ForumActions.AddReplyComment)
   addReplyComment(ctx: StateContext<ForumStateModel>, action: ForumActions.AddReplyComment) {
     const state = ctx.getState();
     const onlineUser = state.onlineUser;
+
     const newReply: NestedCommentWithOwner = {
       id: crypto.randomUUID(),
       txt: action.replyText,
@@ -81,16 +95,23 @@ export class ForumState {
       owner: onlineUser,
       ownerId: onlineUser.id,
       deletedAt: null,
-      parentCommentId: action.comment.id,
+      parentCommentId: action.comment?.id ?? undefined,
       replies: [],
     };
-    const updatedComments = this.addReplyToComment(
-      state.commentsWithOwners,
-      action.comment.id,
-      newReply
-    );
-    ctx.patchState({ commentsWithOwners: updatedComments });
-    this.saveToLocalStorage(updatedComments);
+
+    // If this is a reply to an existing comment
+    if (action.comment?.id) {
+      const updatedComments = this.addReply(state.commentsWithOwners, action.comment.id, newReply);
+      ctx.patchState({ commentsWithOwners: updatedComments });
+      this.saveToLocalStorage(updatedComments);
+      return;
+    }
+
+    // If this is a NEW root-level comment
+
+    const updatedRootComments = [newReply, ...state.commentsWithOwners];
+    ctx.patchState({ commentsWithOwners: updatedRootComments });
+    this.saveToLocalStorage(updatedRootComments);
   }
 
   @Action(ForumActions.EditComment)
@@ -118,7 +139,7 @@ export class ForumState {
     localStorage.setItem(this.STORAGE_KEY, JSON.stringify(comments));
   }
 
-  private addReplyToComment(
+  private addReply(
     comments: NestedCommentWithOwner[],
     parentId: string,
     newReply: NestedCommentWithOwner
@@ -130,12 +151,14 @@ export class ForumState {
           replies: [...comment.replies, newReply],
         };
       }
+
       if (comment.replies?.length) {
         return {
           ...comment,
-          replies: this.addReplyToComment(comment.replies, parentId, newReply),
+          replies: this.addReply(comment.replies, parentId, newReply),
         };
       }
+
       return comment;
     });
   }

@@ -1,0 +1,200 @@
+@use '../../../../styles/theme' as *;
+
+:host {
+  display: block;
+  min-height: 100vh;
+  background: $light-bg-secondary;
+
+  @include dark-mode {
+    background: $dark-bg;
+  }
+}
+
+.article-page {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem;
+
+  @media (max-width: 768px) {
+    padding: 1rem;
+  }
+
+  .back-button {
+    position: fixed;
+    left: calc((100vw - 855px) / 2);
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 100;
+
+    --button-width: 45px;
+    --button-height: 45px;
+    --button-min-width: 45px;
+    --button-border-radius: 50%;
+    --button-padding: 0;
+    --button-background: #6366f1;
+    --button-color: #ffffff;
+    --button-border: none;
+    --button-hover-background: #4f46e5;
+    --button-hover-color: #ffffff;
+    --button-hover-border-color: transparent;
+    --button-hover-transform: scale(1.1);
+    --button-active-transform: scale(0.95);
+    --button-transition: all 0.2s ease;
+    --button-gap: 0.5rem;
+    --button-font-size: 1rem;
+
+    @include dark-mode {
+      --button-background: #818cf8;
+      --button-color: #0f0f1a;
+      --button-hover-background: #a5b4fc;
+      --button-hover-color: #0f0f1a;
+    }
+
+    @media (max-width: 1024px) {
+      left: calc((100vw - min(900px, calc(100vw - 4rem))) / 2);
+    }
+
+    @media (max-width: 768px) {
+      left: 0.3rem;
+      top: 90px;
+      transform: none;
+
+      --button-width: 30px;
+      --button-height: 30px;
+      --button-min-width: 30px;
+    }
+  }
+
+  article {
+    background: $light-bg;
+    border-radius: 12px;
+    padding: 3rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+
+    @media (max-width: 768px) {
+      padding: 2rem 1.5rem;
+      border-radius: 10px;
+    }
+
+    @include dark-mode {
+      background: $dark-bg-secondary;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    }
+
+    .page-title {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: $light-text;
+      margin: 0 0 1.5rem 0;
+      line-height: 1.3;
+
+      @media (max-width: 768px) {
+        font-size: 2rem;
+      }
+
+      @include dark-mode {
+        color: $dark-text;
+      }
+    }
+
+    .article-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+
+      .article-meta-item {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+
+        .article-category {
+          padding: 0.5rem 1rem;
+          background: $light-accent;
+          color: white;
+          border-radius: 8px;
+          font-weight: 600;
+          font-size: 0.875rem;
+          white-space: nowrap;
+
+          @include dark-mode {
+            background: $dark-accent;
+          }
+        }
+
+        .article-date {
+          font-size: 0.9rem;
+          color: $light-text-muted;
+
+          @include dark-mode {
+            color: $dark-text-muted;
+          }
+        }
+      }
+
+      .article-author {
+        font-size: 0.9rem;
+        font-weight: 600;
+        color: $light-text;
+        padding: 0.5rem 1rem;
+        background: $light-bg-secondary;
+        border-radius: 8px;
+        white-space: nowrap;
+
+        @include dark-mode {
+          color: $dark-text;
+          background: $dark-bg;
+        }
+      }
+    }
+
+    .article-image {
+      width: 100%;
+      height: auto;
+      max-height: 500px;
+      object-fit: cover;
+      border-radius: 12px;
+      margin-bottom: 2.5rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+
+      @media (max-width: 768px) {
+        border-radius: 10px;
+        margin-bottom: 2rem;
+      }
+
+      @include dark-mode {
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      }
+    }
+
+    .article-content {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: $light-text;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+
+      @media (max-width: 768px) {
+        font-size: 1rem;
+        line-height: 1.7;
+      }
+
+      @include dark-mode {
+        color: $dark-text;
+      }
+    }
+  }
+
+  > p {
+    text-align: center;
+    padding: 3rem 2rem;
+    color: $light-text-muted;
+    font-size: 1.1rem;
+
+    @include dark-mode {
+      color: $dark-text-muted;
+    }
+  }
+}

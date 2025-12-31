@@ -1,6 +1,7 @@
 import { createPropertySelectors, createSelector } from '@ngxs/store';
 import { Article } from '../models/article.models';
 import { CommentWithOwner } from '../models/comment.models';
+import { User } from '../models/user.models';
 import { ForumState, ForumStateModel } from './forum.state';
 
 export class ForumSelectors {
@@ -26,13 +27,26 @@ export class ForumSelectors {
     return [...new Set(all)];
   });
 
-  static articlesByCategory(category: string) {
+  static articlesByCategory(category: string, authorId?: number) {
     return createSelector([ForumState], (state) => {
       if (category === 'All') {
         return state.articles;
       } else {
-        return state.articles.filter((article: Article) => article.category === category);
+        console.log(authorId);
+        if (authorId) {
+          return state.articles.filter(
+            (article: Article) => article.category === category && article.authorId === authorId
+          );
+        } else {
+          return state.articles.filter((article: Article) => article.category === category);
+        }
       }
+    });
+  }
+
+  static authorByArticleId(authorId: number) {
+    return createSelector([ForumState], (state) => {
+      return state.users.find((user: User) => user.id === authorId);
     });
   }
 }

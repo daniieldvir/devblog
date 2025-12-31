@@ -1,0 +1,28 @@
+<app-header />
+<main class="article-page">
+  <app-button (onClick)="onBackClick()" class="back-button">
+    <ng-icon name="heroChevronLeft" [style.width.px]="20" [style.height.px]="20" />
+  </app-button>
+
+  @if (article(); as articleData) {
+  <article>
+    <h1 class="page-title">{{ articleData.title }}</h1>
+    <div class="article-meta">
+      <div class="article-meta-item">
+        <span class="article-category">{{ articleData.category }}</span>
+        <span class="article-date">{{ articleData.createdAt | timeAgo }}</span>
+      </div>
+      <span class="article-author">{{ author() }}</span>
+    </div>
+    @if (articleData.imageUrl) {
+    <img [src]="articleData.imageUrl" [alt]="articleData.title" class="article-image" />
+    }
+    <div class="article-content">
+      {{ articleData.content }}
+    </div>
+  </article>
+  } @else {
+  <p>Article not found</p>
+  }
+</main>
+<app-footer />

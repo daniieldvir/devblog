@@ -11,7 +11,7 @@ export namespace ForumActions {
 
   export class AddReplyComment {
     static readonly type = '[Forum] Add Reply Comment';
-    constructor(public readonly comment: CommentWithOwner, public readonly replyText: string) {}
+    constructor(public readonly replyText: string, public readonly comment?: CommentWithOwner) {}
   }
 
   export class EditComment {
@@ -22,5 +22,9 @@ export namespace ForumActions {
   export class DeleteComment {
     static readonly type = '[Forum] Delete Comment';
     constructor(public readonly commentId: string) {}
+  }
+
+  export class GetUsers {
+    static readonly type = '[Forum] Get Users';
   }
 }

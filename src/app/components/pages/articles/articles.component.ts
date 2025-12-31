@@ -1,7 +1,8 @@
 import { JsonPipe } from '@angular/common';
 import { Component, computed, inject, OnInit, signal } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { select, Store } from '@ngxs/store';
+import { Article } from '../../../models/article.models';
 import { ForumActions } from '../../../state/forum.action';
 import { ForumSelectors } from '../../../state/forum.selectors';
 import { FooterComponent } from '../../frame-components/footer/footer.component';
@@ -18,6 +19,7 @@ import { ChipFilterComponent } from '../../shared-components/chip-filter/chip-fi
     ArticlePreviewComponent,
     ChipFilterComponent,
     JsonPipe,
+    RouterLink,
   ],
   templateUrl: './articles.component.html',
   styleUrl: './articles.component.scss',
@@ -36,6 +38,7 @@ export class ArticlesComponent implements OnInit {
   ]);
 
   protected selectedChip = signal<string>('All');
+  protected selectedAuthorId = signal<number | undefined>(undefined);
 
   protected readonly articlesByCategory = computed(() => {
     const category = this.selectedChip();
@@ -44,16 +47,30 @@ export class ArticlesComponent implements OnInit {
       return this.allArticles() ?? [];
     }
 
-    return this.store.selectSignal(ForumSelectors.articlesByCategory(category))();
+    return this.store.selectSignal(
+      ForumSelectors.articlesByCategory(category, this.selectedAuthorId())
+    )();
   });
 
   public ngOnInit(): void {
     const nav = this.router.lastSuccessfulNavigation();
     const stateCategory = nav?.extras.state?.['category'] as string | undefined;
+    const stateAuthorId = nav?.extras.state?.['authorId'] as number | undefined;
 
     if (stateCategory) {
       this.selectedChip.set(stateCategory);
     }
+    if (stateAuthorId) {
+      this.selectedAuthorId.set(stateAuthorId);
+      console.log(this.selectedAuthorId());
+    }
     this.store.dispatch(new ForumActions.LoadArticles());
+  }
+
+  protected navigateToArticle(article: Article): void {
+    const autorName = this.store.selectSignal(ForumSelectors.authorByArticleId(article.authorId))();
+    this.router.navigate(['/articles', article.id], {
+      state: { article: article, author: autorName },
+    });
   }
 }

@@ -36,7 +36,7 @@ export class CommentListComponent {
     if (!this.selectedComment()) {
       return;
     }
-    this.store.dispatch(new ForumActions.AddReplyComment(this.selectedComment()!, value));
+    this.store.dispatch(new ForumActions.AddReplyComment(value, this.selectedComment()!));
   }
 
   protected onDeleteComment(commentId: string) {
