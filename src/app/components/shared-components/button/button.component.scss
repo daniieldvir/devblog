@@ -14,7 +14,7 @@
   justify-content: center;
   transition: var(--button-transition, all 0.2s ease);
   gap: var(--button-gap, auto);
-  font-size: var(--button-font-size, auto);
+  font-size: var(--button-font-size, 14px);
 
   &:hover {
     background-color: var(--button-hover-background, black);
