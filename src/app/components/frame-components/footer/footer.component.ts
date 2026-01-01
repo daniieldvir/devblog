@@ -18,6 +18,7 @@ export class FooterComponent {
         { label: 'Home', url: '/' },
         { label: 'Forum', url: '/forum' },
         { label: 'Categories', url: '/categories' },
+        { label: 'Articles', url: '/articles' },
         { label: 'About', url: '/about' },
       ],
     },

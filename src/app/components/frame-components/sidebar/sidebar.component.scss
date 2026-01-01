@@ -24,6 +24,14 @@
       max-width: 100%;
       padding: 1.25rem;
       gap: 1.25rem;
+      height: 100%;
+      border: none;
+      border-right: 1px solid $light-border;
+      border-radius: 0;
+
+      @include dark-mode {
+        border-right-color: $dark-border;
+      }
     }
 
     .sidebar-section {
